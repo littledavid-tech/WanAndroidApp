@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Wan Android</string>
+    <string name="app_version">1.0</string>
+    <!--主页的相关元素的Text-->
+    <string name="main_bottom_nav_name">主页</string>
+    <string name="home_page__tab_article">文章</string>
+    <string name="home_page__tab_project">项目</string>
+    <string name="welcome_welcome_saying">Had I not seen the Sun, I could have borne the shade.</string>
+</resources>

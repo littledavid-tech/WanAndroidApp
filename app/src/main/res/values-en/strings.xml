@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Play Android</string>
+    <string name="app_version">1.0</string>
+    <string name="main_bottom_nav_name">Home</string>
+    <string name="home_page__tab_article">Article</string>
+    <string name="home_page__tab_project">Project</string>
+    <string name="welcome_welcome_saying">"Had I not seen the Sun, I could have borne the shade. "</string>
+</resources>
