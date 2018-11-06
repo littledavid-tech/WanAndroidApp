@@ -1,10 +1,11 @@
-package cn.shycoder.wanandroidapp
+package cn.shycoder.wanandroidapp.base
 
 
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import butterknife.BindView
+import cn.shycoder.wanandroidapp.R
 
 abstract class BaseToolBarActivity : BaseActivity() {
     @BindView(R.id.toolbar)

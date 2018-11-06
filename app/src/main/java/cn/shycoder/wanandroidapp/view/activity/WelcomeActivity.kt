@@ -1,12 +1,9 @@
-package cn.shycoder.wanandroidapp.view
+package cn.shycoder.wanandroidapp.view.activity
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.widget.TextView
 import butterknife.BindView
-import cn.shycoder.wanandroidapp.BaseActivity
+import cn.shycoder.wanandroidapp.base.BaseActivity
 import cn.shycoder.wanandroidapp.R
 
 

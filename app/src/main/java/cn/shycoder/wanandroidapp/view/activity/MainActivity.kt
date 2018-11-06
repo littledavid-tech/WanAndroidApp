@@ -1,4 +1,4 @@
-package cn.shycoder.wanandroidapp.view
+package cn.shycoder.wanandroidapp.view.activity
 
 import android.content.Context
 import android.content.Intent
@@ -8,7 +8,7 @@ import android.support.v4.widget.DrawerLayout
 import android.view.Gravity
 import butterknife.BindString
 import butterknife.BindView
-import cn.shycoder.wanandroidapp.BaseToolBarActivity
+import cn.shycoder.wanandroidapp.base.BaseToolBarActivity
 import cn.shycoder.wanandroidapp.R
 
 class MainActivity : BaseToolBarActivity() {
