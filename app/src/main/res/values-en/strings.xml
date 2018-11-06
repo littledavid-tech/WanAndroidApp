@@ -6,4 +6,11 @@
     <string name="home_page__tab_article">Article</string>
     <string name="home_page__tab_project">Project</string>
     <string name="welcome_welcome_saying">"Had I not seen the Sun, I could have borne the shade. "</string>
+    <string name="main_nav_head_tourist">Tourist</string>
+    <string name="main_nav_menu_my">My</string>
+    <string name="main_nav_menu_other">Other</string>
+    <string name="main_nav_menu_my_collect">My Collect</string>
+    <string name="main_nav_menu_about">About</string>
+    <string name="main_nav_menu_login">Login</string>
+    <string name="main_nav_menu_logout">Logout</string>
 </resources>

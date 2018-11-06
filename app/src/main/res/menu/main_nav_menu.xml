@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--主界面的侧滑菜单-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/main_nav_menu_my">
+        <menu>
+            <item
+                android:id="@+id/main_menu_my_collect"
+                android:icon="@drawable/main_nav_men_collect"
+                android:title="@string/main_nav_menu_my_collect" />
+            <item
+                android:id="@+id/main_menu_my_login"
+                android:icon="@drawable/main_nav_menu_login"
+                android:title="@string/main_nav_menu_login" />
+            <item
+                android:id="@+id/main_menu_my_logout"
+                android:icon="@drawable/main_nav_menu_logout"
+                android:title="@string/main_nav_menu_logout" />
+        </menu>
+    </item>
+    <item android:title="@string/main_nav_menu_other">
+        <menu>
+            <item
+                android:id="@+id/main_menu_other_about"
+                android:icon="@drawable/main_nav_menu_about"
+                android:title="@string/main_nav_menu_about" />
+        </menu>
+    </item>
+</menu>

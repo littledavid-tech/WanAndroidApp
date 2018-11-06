@@ -6,4 +6,11 @@
     <string name="home_page__tab_article">文章</string>
     <string name="home_page__tab_project">项目</string>
     <string name="welcome_welcome_saying">Had I not seen the Sun, I could have borne the shade.</string>
+    <string name="main_nav_head_tourist">游客</string>
+    <string name="main_nav_menu_my">我的</string>
+    <string name="main_nav_menu_other">其他</string>
+    <string name="main_nav_menu_my_collect">我的收藏</string>
+    <string name="main_nav_menu_about">关于</string>
+    <string name="main_nav_menu_login">登录</string>
+    <string name="main_nav_menu_logout">退出</string>
 </resources>
