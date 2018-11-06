@@ -1,6 +1,5 @@
 package cn.shycoder.wanandroidapp.view
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.support.design.widget.NavigationView
@@ -26,8 +25,6 @@ class MainActivity : BaseToolBarActivity() {
     @BindView(R.id.main_tab_layout)
     lateinit var tabLayout: TabLayout
 
-    lateinit var tabs: Array<String>
-
     override fun getToolbarTitle(): String {
         return app_name
     }
@@ -50,7 +47,6 @@ class MainActivity : BaseToolBarActivity() {
     override fun canBack(): Boolean {
         return false
     }
-
 
     companion object {
         fun show(context: Context) {

@@ -29,8 +29,9 @@ abstract class BaseToolBarActivity : BaseActivity() {
         this.actionBar = this.supportActionBar!!
         this.actionBar.title = getToolbarTitle()
 
+        actionBar.setDisplayHomeAsUpEnabled(true)
+
         if (canBack()) {
-            actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.setHomeAsUpIndicator(R.drawable.app_toolbar_back)
         }
     }
@@ -57,7 +58,7 @@ abstract class BaseToolBarActivity : BaseActivity() {
                 if (canBack()) {
                     this.onDestroy()
                 } else {
-
+                    this.onHomeSelected()
                 }
             }
         }

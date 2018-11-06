@@ -12,7 +12,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/main_nav_user_head" />
-    
+
     <TextView
         android:id="@+id/main_nav_head_user_name"
         android:layout_width="wrap_content"
