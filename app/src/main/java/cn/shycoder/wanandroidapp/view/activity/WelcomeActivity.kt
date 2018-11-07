@@ -6,7 +6,6 @@ import butterknife.BindView
 import cn.shycoder.wanandroidapp.view.BaseActivity
 import cn.shycoder.wanandroidapp.R
 
-
 class WelcomeActivity : BaseActivity() {
 
     @BindView(R.id.tv)

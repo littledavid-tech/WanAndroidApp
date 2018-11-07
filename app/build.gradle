@@ -35,8 +35,13 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
+
     //黄油刀
     implementation 'com.jakewharton:butterknife:8.8.1'
     kapt 'com.jakewharton:butterknife-compiler:8.8.1'
