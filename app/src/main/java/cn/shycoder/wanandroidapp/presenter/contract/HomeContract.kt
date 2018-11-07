@@ -1,7 +1,7 @@
-package cn.shycoder.wanandroidapp.presenter
+package cn.shycoder.wanandroidapp.presenter.contract
 
-import cn.shycoder.wanandroidapp.base.BasePresenter
-import cn.shycoder.wanandroidapp.base.BaseView
+import cn.shycoder.wanandroidapp.presenter.BasePresenter
+import cn.shycoder.wanandroidapp.view.BaseView
 
 /**
  * Created by ShyCoder on 11/7/2018.
@@ -15,17 +15,14 @@ interface HomeContract {
         fun showFragment()
     }
 
-    interface HomePresenter<T : BaseView> : BasePresenter {
-
-        var mView: T?
-
+    interface HomePresenter<T> : BasePresenter<HomeView> {
         /**
          * 创建主页的Fragment
          * */
         fun createHomeFragment()
 
         override fun onDestroy() {
-            mView = null
+            view = null
         }
     }
 }

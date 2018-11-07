@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="15dp"
-        android:alpha="0"
         android:src="@drawable/recycler_view_return_top_btn_src"
+        android:visibility="invisible"
         app:elevation="5dp" />
 </FrameLayout>

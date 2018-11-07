@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.activity.MainActivity" />
-        <activity android:name=".base.BaseToolBarActivity"></activity>
+        <activity android:name=".view.BaseToolBarActivity"></activity>
     </application>
 
 </manifest>

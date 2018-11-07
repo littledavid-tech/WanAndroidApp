@@ -5,7 +5,7 @@
     android:id="@+id/main_dl_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cn.shycoder.wanandroidapp.base.BaseToolBarActivity">
+    tools:context="cn.shycoder.wanandroidapp.view.BaseToolBarActivity">
 
     <include layout="@layout/main_nav" />
 

@@ -8,7 +8,7 @@ import android.support.v4.widget.DrawerLayout
 import android.view.Gravity
 import butterknife.BindString
 import butterknife.BindView
-import cn.shycoder.wanandroidapp.base.BaseToolBarActivity
+import cn.shycoder.wanandroidapp.view.BaseToolBarActivity
 import cn.shycoder.wanandroidapp.R
 
 class MainActivity : BaseToolBarActivity() {

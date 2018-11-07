@@ -3,7 +3,7 @@ package cn.shycoder.wanandroidapp.view.activity
 import android.os.Handler
 import android.widget.TextView
 import butterknife.BindView
-import cn.shycoder.wanandroidapp.base.BaseActivity
+import cn.shycoder.wanandroidapp.view.BaseActivity
 import cn.shycoder.wanandroidapp.R
 
 

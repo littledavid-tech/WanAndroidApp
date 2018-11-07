@@ -1,4 +1,4 @@
-package cn.shycoder.wanandroidapp.base
+package cn.shycoder.wanandroidapp.view
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

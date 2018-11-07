@@ -1,11 +1,9 @@
 package cn.shycoder.wanandroidapp.presenter
 
-import android.app.Fragment
+import cn.shycoder.wanandroidapp.presenter.contract.HomeContract
 
-/**
- * Created by ShyCoder on 11/7/2018.
- */
-class HomePresenterImpl(override var mView: HomeContract.HomeView?)
+
+class HomePresenterImpl(override var view: HomeContract.HomeView?)
     : HomeContract.HomePresenter<HomeContract.HomeView> {
 
     override fun createHomeFragment() {
