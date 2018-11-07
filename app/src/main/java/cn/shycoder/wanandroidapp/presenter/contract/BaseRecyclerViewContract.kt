@@ -1,7 +1,6 @@
 package cn.shycoder.wanandroidapp.presenter.contract
 
 import cn.shycoder.wanandroidapp.presenter.BasePresenter
-import cn.shycoder.wanandroidapp.view.BaseView
 
 /**
  * 具有RecyclerView的Module的接口

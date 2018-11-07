@@ -31,7 +31,7 @@ class ArticleAdapter(list: MutableList<Article>)
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        val item = list.get(position)
+        val item = list[position]
         holder!!.tvTitle.text = item.title
         holder.tvAuthor.text = item.author
         holder.tvKnowledgeSystem.text = "${item.superChapterName}/${item.chapterName}"
@@ -63,7 +63,7 @@ class ArticleAdapter(list: MutableList<Article>)
         lateinit var ivLike: ImageView
 
         init {
-            ButterKnife.bind(itemView!!)
+            ButterKnife.bind(this, itemView!!)
         }
     }
 }

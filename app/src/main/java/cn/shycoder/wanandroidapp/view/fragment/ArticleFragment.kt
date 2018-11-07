@@ -1,6 +1,9 @@
 package cn.shycoder.wanandroidapp.view.fragment
 
+import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.widget.Adapter
+import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.adapter.ArticleAdapter
 import cn.shycoder.wanandroidapp.model.entity.Article
 import cn.shycoder.wanandroidapp.presenter.ArticlePresenterImpl
@@ -9,7 +12,7 @@ import cn.shycoder.wanandroidapp.presenter.contract.ArticleContract
 /**
  * Created by ITSoftware on 11/7/2018.
  */
-class ArticleFragment()
+class ArticleFragment
     : BaseRecyclerViewFragment<ArticleContract.ArticlePresenter>(),
         ArticleContract.ArticleView {
 
@@ -18,6 +21,10 @@ class ArticleFragment()
     override fun doInit() {
         super.doInit()
         presenter?.loadMore()
+    }
+
+    override fun getLayoutResId(): Int {
+        return R.layout.recycler_view_fragment
     }
 
     override fun loadedData(list: List<Article>) {

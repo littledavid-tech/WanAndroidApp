@@ -1,6 +1,6 @@
 package cn.shycoder.wanandroidapp.presenter
 
-import cn.shycoder.wanandroidapp.view.BaseView
+import cn.shycoder.wanandroidapp.presenter.contract.BaseView
 
 /**
  * Created by ShyCoder on 11/7/2018.

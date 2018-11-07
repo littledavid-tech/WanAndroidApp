@@ -18,11 +18,12 @@ abstract class BaseActivity : AppCompatActivity() {
         this.setContentView(getLayoutResId())
         //加载黄油刀
         this.mUnbinder = ButterKnife.bind(this)
+        doInit()
     }
 
     override fun onPostResume() {
         super.onPostResume()
-        doInit()
+
     }
 
     override fun onDestroy() {

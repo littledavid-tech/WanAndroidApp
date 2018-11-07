@@ -16,6 +16,6 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="15dp"
         android:src="@drawable/recycler_view_return_top_btn_src"
-        android:visibility="invisible"
+        android:theme="@style/AppTheme"
         app:elevation="5dp" />
 </FrameLayout>

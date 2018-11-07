@@ -18,8 +18,13 @@ abstract class BaseFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = LayoutInflater.from(MyApplication.context).inflate(getLayoutResId(), container, false)
-        mUnbinder = ButterKnife.bind(view)
+        mUnbinder = ButterKnife.bind(this, view)
         return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        doInit()
     }
 
     abstract fun getLayoutResId(): Int
@@ -28,6 +33,6 @@ abstract class BaseFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        mUnbinder
+        mUnbinder.unbind()
     }
 }

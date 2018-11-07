@@ -10,6 +10,7 @@ import butterknife.BindString
 import butterknife.BindView
 import cn.shycoder.wanandroidapp.view.BaseToolBarActivity
 import cn.shycoder.wanandroidapp.R
+import cn.shycoder.wanandroidapp.view.fragment.ArticleFragment
 
 class MainActivity : BaseToolBarActivity() {
 
@@ -21,9 +22,6 @@ class MainActivity : BaseToolBarActivity() {
 
     @BindView(R.id.main_nav)
     lateinit var nav: NavigationView
-
-    @BindView(R.id.main_tab_layout)
-    lateinit var tabLayout: TabLayout
 
     override fun getToolbarTitle(): String {
         return appName
@@ -37,6 +35,9 @@ class MainActivity : BaseToolBarActivity() {
         super.doInit()
         //设置Home的图标
         this.actionBar.setHomeAsUpIndicator(R.drawable.main_nav_menu)
+        val transaction = this.supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.main_flContainer, ArticleFragment())
+        transaction.commit()
     }
 
     override fun onHomeSelected() {
