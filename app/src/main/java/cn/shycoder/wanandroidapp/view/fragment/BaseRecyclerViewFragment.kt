@@ -15,7 +15,7 @@ import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
 abstract class BaseRecyclerViewFragment<T : BaseRecyclerViewContract.BaseRecyclerPresenter<*>>
     : BaseFragment(), BaseRecyclerViewContract.BaseRecyclerView {
 
-    private var mPresenter: T? = null
+    var presenter: T? = null
 
     @BindView(R.id.recycler_view)
     lateinit var recyclerView: PullLoadMoreRecyclerView
@@ -25,8 +25,8 @@ abstract class BaseRecyclerViewFragment<T : BaseRecyclerViewContract.BaseRecycle
 
     override fun onDestroy() {
         super.onDestroy()
-        mPresenter?.onDestroy()
-        mPresenter = null
+        presenter?.onDestroy()
+        presenter = null
     }
 
     override fun getLayoutResId(): Int {
@@ -34,7 +34,7 @@ abstract class BaseRecyclerViewFragment<T : BaseRecyclerViewContract.BaseRecycle
     }
 
     override fun doInit() {
-        this.mPresenter = createPresenter()
+        this.presenter = createPresenter()
         setLayoutManager()
         doInitRecyclerView()
     }
@@ -47,11 +47,11 @@ abstract class BaseRecyclerViewFragment<T : BaseRecyclerViewContract.BaseRecycle
         //设置加载更和刷新的事件
         recyclerView.setOnPullLoadMoreListener(object : PullLoadMoreRecyclerView.PullLoadMoreListener {
             override fun onLoadMore() {
-                mPresenter?.loadMore()
+                presenter?.loadMore()
             }
 
             override fun onRefresh() {
-                mPresenter?.refreshData()
+                presenter?.refreshData()
             }
         })
 
@@ -107,5 +107,5 @@ abstract class BaseRecyclerViewFragment<T : BaseRecyclerViewContract.BaseRecycle
         recyclerView.setLinearLayout()
     }
 
-    abstract fun <T> createPresenter(): T
+    abstract fun createPresenter(): T
 }

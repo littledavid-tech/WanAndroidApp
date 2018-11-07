@@ -3,6 +3,7 @@ package cn.shycoder.wanandroidapp.view.fragment
 import android.widget.Adapter
 import cn.shycoder.wanandroidapp.adapter.ArticleAdapter
 import cn.shycoder.wanandroidapp.model.entity.Article
+import cn.shycoder.wanandroidapp.presenter.ArticlePresenterImpl
 import cn.shycoder.wanandroidapp.presenter.contract.ArticleContract
 
 /**
@@ -13,6 +14,11 @@ class ArticleFragment()
         ArticleContract.ArticleView {
 
     var adapter: ArticleAdapter? = null
+
+    override fun doInit() {
+        super.doInit()
+        presenter?.loadMore()
+    }
 
     override fun loadedData(list: List<Article>) {
         if (adapter == null) {
@@ -29,9 +35,7 @@ class ArticleFragment()
         recyclerView.setAdapter(adapter)
     }
 
-
-    override fun <T> createPresenter(): T {
-        TODO()
+    override fun createPresenter(): ArticleContract.ArticlePresenter {
+        return ArticlePresenterImpl(this)
     }
-
 }

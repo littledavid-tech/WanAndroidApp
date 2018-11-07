@@ -11,6 +11,7 @@ interface ArticleContract {
         fun loadedData(list: List<Article>)
 
         fun refreshedData(list: List<Article>)
+
     }
 
     interface ArticlePresenter : BaseRecyclerViewContract.BaseRecyclerPresenter<ArticleView> {
