@@ -12,16 +12,6 @@ interface BaseRecyclerViewContract {
     interface BaseRecyclerView : BaseView {
 
         /**
-         * 将更多的数据显示到界面上
-         * */
-        fun <T> loadedData(list: List<T>)
-
-        /**
-         * 刷新数据
-         * */
-        fun <T> refreshedData(list: List<T>)
-
-        /**
          * 是否启用加载更多
          * */
         fun enableLoadMore(boolean: Boolean)

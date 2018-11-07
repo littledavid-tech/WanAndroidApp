@@ -18,6 +18,9 @@ interface HomeArticleService {
     fun getArticles(@Path("page") pageIndex: Int): io.reactivex.Observable<SuperEntity<Paging<Article>>>
 
     companion object {
+        /**
+         * HomeArticleService的实例
+         * */
         var instance: HomeArticleService = RetrofitUtils.create()
     }
 }

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    app:cardElevation="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/home_article_item_tvTag"
+            style="@style/AppTagTextView"
+            android:text="New" />
+
+        <TextView
+            android:id="@+id/home_article_item_tvTitle"
+            style="@style/TitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/home_article_item_tvTag"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/home_article_item_ivLike"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="Article Title " />
+
+        <ImageView
+            android:id="@+id/home_article_item_ivLike"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp" />
+
+        <ImageView
+            android:id="@+id/home_article_item_ivAuthorIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="3dp"
+            android:src="@drawable/app_article_author_flag" />
+
+        <TextView
+            android:id="@+id/home_article_item_tvAuthor"
+            style="@style/AppLinkTextView"
+            android:layout_width="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_toRightOf="@id/home_article_item_ivAuthorIcon"
+            android:ellipsize="end"
+            android:maxLength="20"
+            android:text="Author" />
+
+        <ImageView
+            android:id="@+id/home_article_item_ivKnowledgeSystemIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/home_article_item_tvAuthor"
+            android:src="@drawable/app_article_knowledge_system" />
+
+        <TextView
+            android:id="@+id/home_article_item_tvKnowledgeSystem"
+            style="@style/AppLinkTextView"
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_toRightOf="@id/home_article_item_ivKnowledgeSystemIcon"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:text="Knowledge System" />
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

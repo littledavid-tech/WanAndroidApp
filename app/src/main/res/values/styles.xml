@@ -11,4 +11,26 @@
         <item name="android:divider">@color/divider</item>
     </style>
 
+    <style name="TitleTextView" parent="AppTheme">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">19dp</item>
+    </style>
+
+    <style name="AppTagTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/app_article_red_border_shape</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:textSize">10dp</item>
+    </style>
+
+    <style name="AppLinkTextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/like_color</item>
+        <item name="android:textSize">12dp</item>
+    </style>
 </resources>
