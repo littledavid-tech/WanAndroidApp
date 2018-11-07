@@ -24,7 +24,7 @@ abstract class BaseFragment : Fragment() {
 
     abstract fun getLayoutResId(): Int
 
-    abstract fun doInit(): Int
+    abstract fun doInit()
 
     override fun onDestroy() {
         super.onDestroy()

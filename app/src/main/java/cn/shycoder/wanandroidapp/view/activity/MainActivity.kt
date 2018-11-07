@@ -14,7 +14,7 @@ import cn.shycoder.wanandroidapp.R
 class MainActivity : BaseToolBarActivity() {
 
     @BindString(R.string.app_name)
-    lateinit var app_name: String
+    lateinit var appName: String
 
     @BindView(R.id.main_dl_parent)
     lateinit var dlParent: DrawerLayout
@@ -26,7 +26,7 @@ class MainActivity : BaseToolBarActivity() {
     lateinit var tabLayout: TabLayout
 
     override fun getToolbarTitle(): String {
-        return app_name
+        return appName
     }
 
     override fun getLayoutResId(): Int {
