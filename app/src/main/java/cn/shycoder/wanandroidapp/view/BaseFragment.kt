@@ -7,14 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import butterknife.ButterKnife
 import butterknife.Unbinder
-import cn.shycoder.wanandroidapp.utils.MyApplication
+import cn.shycoder.wanandroidapp.presenter.contract.BaseContract
 
 /**
  * 所有Fragment的基类
  */
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment<T : BaseContract.BasePresenter<*>> : Fragment() {
 
+    /**
+     * 解绑黄油刀的对象
+     * */
     private lateinit var mUnbinder: Unbinder
+
+    /**
+     * 当前的Presenter对象
+     * */
+    var presenter: T? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(getLayoutResId(), container, false)
@@ -24,15 +32,23 @@ abstract class BaseFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        this.presenter = createPresenter()
         doInit()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mUnbinder.unbind()
+        presenter?.onDestroy()
+        presenter = null
     }
 
     abstract fun getLayoutResId(): Int
 
     abstract fun doInit()
 
-    override fun onDestroy() {
-        super.onDestroy()
-        mUnbinder.unbind()
-    }
+    /**
+     * 创建与当前View相绑定的Presenter
+     * */
+    abstract fun createPresenter(): T
 }

@@ -18,9 +18,7 @@ import com.orhanobut.logger.Logger
  * 具有RecyclerView的Fragment的基类，所有的具有RecyclerView的Fragment都从此类继承
  * */
 abstract class BaseRecyclerViewFragment<T : BaseRecyclerViewContract.BaseRecyclerPresenter<*>>
-    : BaseFragment(), BaseRecyclerViewContract.BaseRecyclerView {
-
-    var presenter: T? = null
+    : BaseFragment<T>(), BaseRecyclerViewContract.BaseRecyclerView {
 
     @BindView(R.id.recycler_view)
     lateinit var recyclerView: XRecyclerView
@@ -30,8 +28,6 @@ abstract class BaseRecyclerViewFragment<T : BaseRecyclerViewContract.BaseRecycle
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter?.onDestroy()
-        presenter = null
         recyclerView.destroy()
     }
 
@@ -144,8 +140,6 @@ abstract class BaseRecyclerViewFragment<T : BaseRecyclerViewContract.BaseRecycle
     fun addHeaderView(headerView: View) {
         this.recyclerView.addHeaderView(headerView)
     }
-
-    abstract fun createPresenter(): T
 
 
 }

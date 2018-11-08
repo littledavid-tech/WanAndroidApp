@@ -10,40 +10,47 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by ITSoftware on 11/7/2018.
  */
-class ArticlePresenterImpl(override var view: ArticleContract.ArticleView?)
+class ArticlePresenterImpl
     : ArticleContract.ArticlePresenter {
 
-    var currentPage = 0
-    var totalPage = 1
+    override var view: ArticleContract.ArticleView? = null
+    override var disposable: Disposable? = null
+
+    private var mCurrentPageIndex = 0
+    private var mTotalPageCount = 1
 
     private var mDisposable: Disposable? = null
 
     override fun loadMore() {
-        if (currentPage >= totalPage) {
+        if (mCurrentPageIndex >= mTotalPageCount) {
             view?.enableLoadMore(false)
             return
         }
         loadData(false)
-        currentPage++
+        mCurrentPageIndex++
     }
 
     override fun refreshData() {
-        currentPage = 0
-        totalPage = 1
+        mCurrentPageIndex = 0
+        mTotalPageCount = 1
         view?.enableLoadMore(true)
         loadData(true)
     }
 
+    /**
+     * 加载首页文章的信息
+     * @param isRefresh 是否是刷新操作
+     * */
     private fun loadData(isRefresh: Boolean) {
         HomeArticleService
                 .instance
-                .getArticles(currentPage)
+                .getArticles(mCurrentPageIndex)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         {
-                            this.totalPage = it.data?.pageCount!!
-                            Logger.i("Current Page:${this.currentPage} Total Page Count${this.totalPage}")
+                            this.mTotalPageCount = it.data?.pageCount!!
+                            Logger.i("Current Page:${this.mCurrentPageIndex} Total Page Count${this.mTotalPageCount}")
                             if (isRefresh)
                                 view?.refreshedData(it.data!!.datas!!)
                             else

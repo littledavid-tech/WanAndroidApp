@@ -1,8 +1,5 @@
 package cn.shycoder.wanandroidapp.view.fragment
 
-import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
-import android.widget.Adapter
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.adapter.ArticleAdapter
 import cn.shycoder.wanandroidapp.model.entity.Article
@@ -10,7 +7,7 @@ import cn.shycoder.wanandroidapp.presenter.ArticlePresenterImpl
 import cn.shycoder.wanandroidapp.presenter.contract.ArticleContract
 
 /**
- * Created by ITSoftware on 11/7/2018.
+ * 显示首页文章的碎片
  */
 class ArticleFragment
     : BaseRecyclerViewFragment<ArticleContract.ArticlePresenter>(),
@@ -46,6 +43,6 @@ class ArticleFragment
     }
 
     override fun createPresenter(): ArticleContract.ArticlePresenter {
-        return ArticlePresenterImpl(this)
+        return ArticlePresenterImpl().apply { view = this@ArticleFragment }
     }
 }

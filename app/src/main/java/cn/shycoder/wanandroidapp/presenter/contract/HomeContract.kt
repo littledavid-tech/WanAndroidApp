@@ -1,20 +1,16 @@
 package cn.shycoder.wanandroidapp.presenter.contract
 
-import cn.shycoder.wanandroidapp.presenter.BasePresenter
 
-/**
- * Created by ShyCoder on 11/7/2018.
- */
 interface HomeContract {
 
-    interface HomeView : BaseView {
+    interface HomeView : BaseContract.BaseView {
         /**
          * 将Fragment显示出来
          * */
         fun showFragment()
     }
 
-    interface HomePresenter<T> : BasePresenter<HomeView> {
+    interface HomePresenter : BaseContract.BasePresenter<HomeView> {
         /**
          * 创建主页的Fragment
          * */

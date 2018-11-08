@@ -1,14 +1,12 @@
 package cn.shycoder.wanandroidapp.presenter.contract
 
-import cn.shycoder.wanandroidapp.presenter.BasePresenter
-
 /**
  * 具有RecyclerView的Module的接口
  */
 interface BaseRecyclerViewContract {
 
 
-    interface BaseRecyclerView : BaseView {
+    interface BaseRecyclerView : BaseContract.BaseView {
 
         /**
          * 是否启用加载更多
@@ -21,7 +19,7 @@ interface BaseRecyclerViewContract {
         fun scrollToTop()
     }
 
-    interface BaseRecyclerPresenter<T : BaseRecyclerView> : BasePresenter<T> {
+    interface BaseRecyclerPresenter<T : BaseRecyclerView> : BaseContract.BasePresenter<T> {
         /**
          * 加载等多数据
          * */
