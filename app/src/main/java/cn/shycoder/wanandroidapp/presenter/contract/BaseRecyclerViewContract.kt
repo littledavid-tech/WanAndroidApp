@@ -6,7 +6,7 @@ package cn.shycoder.wanandroidapp.presenter.contract
 interface BaseRecyclerViewContract {
 
 
-    interface BaseRecyclerView : BaseContract.BaseView {
+    interface View : BaseContract.View {
 
         /**
          * 是否启用加载更多
@@ -19,7 +19,7 @@ interface BaseRecyclerViewContract {
         fun scrollToTop()
     }
 
-    interface BaseRecyclerPresenter<T : BaseRecyclerView> : BaseContract.BasePresenter<T> {
+    interface Presenter<T : View> : BaseContract.Presenter<T> {
         /**
          * 加载等多数据
          * */

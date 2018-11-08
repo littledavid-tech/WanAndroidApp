@@ -6,7 +6,7 @@ import cn.shycoder.wanandroidapp.model.entity.Article
  * Created by ITSoftware on 11/7/2018.
  */
 interface ArticleContract {
-    interface ArticleView : BaseRecyclerViewContract.BaseRecyclerView {
+    interface View : BaseRecyclerViewContract.View {
 
         fun loadedData(list: List<Article>)
 
@@ -14,7 +14,7 @@ interface ArticleContract {
 
     }
 
-    interface ArticlePresenter : BaseRecyclerViewContract.BaseRecyclerPresenter<ArticleView> {
+    interface Presenter : BaseRecyclerViewContract.Presenter<View> {
 
     }
 }

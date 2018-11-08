@@ -7,11 +7,11 @@ import io.reactivex.disposables.Disposable
  */
 interface BaseContract {
 
-    interface BaseView {
+    interface View {
 
     }
 
-    interface BasePresenter<T : BaseView> {
+    interface Presenter<T : View> {
 
         var view: T?
         /**

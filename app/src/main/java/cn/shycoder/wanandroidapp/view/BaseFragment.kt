@@ -12,7 +12,7 @@ import cn.shycoder.wanandroidapp.presenter.contract.BaseContract
 /**
  * 所有Fragment的基类
  */
-abstract class BaseFragment<T : BaseContract.BasePresenter<*>> : Fragment() {
+abstract class BaseFragment<T : BaseContract.Presenter<*>> : Fragment() {
 
     /**
      * 解绑黄油刀的对象

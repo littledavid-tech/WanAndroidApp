@@ -10,4 +10,5 @@
     <color name="divider">#BDBDBD</color>
     <color name="red">#de4242</color>
     <color name="like_color">#4fc4d9</color>
+    <color name="main_bottom_nav_bg">#f9f3f3</color>
 </resources>

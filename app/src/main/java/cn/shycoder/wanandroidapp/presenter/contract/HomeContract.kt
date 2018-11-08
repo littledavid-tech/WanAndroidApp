@@ -1,20 +1,24 @@
 package cn.shycoder.wanandroidapp.presenter.contract
 
+import android.support.v4.app.Fragment
+
 
 interface HomeContract {
 
-    interface HomeView : BaseContract.BaseView {
+    interface View : BaseContract.View {
         /**
          * 将Fragment显示出来
          * */
-        fun showFragment()
+        fun showFragment(fragment: Fragment)
     }
 
-    interface HomePresenter : BaseContract.BasePresenter<HomeView> {
+    interface Presenter : BaseContract.Presenter<View> {
         /**
          * 创建主页的Fragment
          * */
-        fun createHomeFragment()
+        fun createHomeFragment(menuId: Int): android.support.v4.app.Fragment
+
+        fun getFragmentMap(): Map<Int, Fragment?>
 
         override fun onDestroy() {
             view = null

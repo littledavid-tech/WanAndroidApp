@@ -11,9 +11,9 @@ import io.reactivex.schedulers.Schedulers
  * Created by ITSoftware on 11/7/2018.
  */
 class ArticlePresenterImpl
-    : ArticleContract.ArticlePresenter {
+    : ArticleContract.Presenter {
 
-    override var view: ArticleContract.ArticleView? = null
+    override var view: ArticleContract.View? = null
     override var disposable: Disposable? = null
 
     private var mCurrentPageIndex = 0
@@ -50,7 +50,8 @@ class ArticlePresenterImpl
                 .subscribe(
                         {
                             this.mTotalPageCount = it.data?.pageCount!!
-                            Logger.i("Current Page:${this.mCurrentPageIndex} Total Page Count${this.mTotalPageCount}")
+                            Logger.i("Current Page:${this.mCurrentPageIndex} " +
+                                    "Total Page Count${this.mTotalPageCount}")
                             if (isRefresh)
                                 view?.refreshedData(it.data!!.datas!!)
                             else

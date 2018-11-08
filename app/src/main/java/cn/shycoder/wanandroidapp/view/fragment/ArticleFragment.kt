@@ -10,8 +10,8 @@ import cn.shycoder.wanandroidapp.presenter.contract.ArticleContract
  * 显示首页文章的碎片
  */
 class ArticleFragment
-    : BaseRecyclerViewFragment<ArticleContract.ArticlePresenter>(),
-        ArticleContract.ArticleView {
+    : BaseRecyclerViewFragment<ArticleContract.Presenter>(),
+        ArticleContract.View {
 
     var adapter: ArticleAdapter? = null
 
@@ -42,7 +42,7 @@ class ArticleFragment
         recyclerView.refreshComplete()
     }
 
-    override fun createPresenter(): ArticleContract.ArticlePresenter {
+    override fun createPresenter(): ArticleContract.Presenter {
         return ArticlePresenterImpl().apply { view = this@ArticleFragment }
     }
 }

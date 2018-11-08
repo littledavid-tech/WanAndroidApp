@@ -17,8 +17,8 @@ import com.orhanobut.logger.Logger
 /**
  * 具有RecyclerView的Fragment的基类，所有的具有RecyclerView的Fragment都从此类继承
  * */
-abstract class BaseRecyclerViewFragment<T : BaseRecyclerViewContract.BaseRecyclerPresenter<*>>
-    : BaseFragment<T>(), BaseRecyclerViewContract.BaseRecyclerView {
+abstract class BaseRecyclerViewFragment<T : BaseRecyclerViewContract.Presenter<*>>
+    : BaseFragment<T>(), BaseRecyclerViewContract.View {
 
     @BindView(R.id.recycler_view)
     lateinit var recyclerView: XRecyclerView

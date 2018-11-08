@@ -25,7 +25,9 @@
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/main_bottom_nav"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@color/main_bottom_nav_bg"
+            app:menu="@menu/main_bottom_nav" />
     </LinearLayout>
 
 </android.support.v4.widget.DrawerLayout>

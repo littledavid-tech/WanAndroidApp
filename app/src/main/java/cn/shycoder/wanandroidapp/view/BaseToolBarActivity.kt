@@ -7,9 +7,8 @@ import android.view.MenuItem
 import butterknife.BindView
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.presenter.contract.BaseContract
-import cn.shycoder.wanandroidapp.view.BaseActivity
 
-abstract class BaseToolBarActivity<T : BaseContract.BasePresenter<*>> : BaseActivity<T>() {
+abstract class BaseToolBarActivity<T : BaseContract.Presenter<*>> : BaseActivity<T>() {
     @BindView(R.id.toolbar)
     lateinit var toolbar: Toolbar
     lateinit var actionBar: ActionBar
@@ -19,6 +18,7 @@ abstract class BaseToolBarActivity<T : BaseContract.BasePresenter<*>> : BaseActi
     }
 
     override fun doInit() {
+        super.doInit()
         doInitToolbar()
     }
 
