@@ -89,14 +89,15 @@ class MainActivity :
      * */
     override fun showFragment(fragment: Fragment) {
         val transaction = this.mFragmentManager.beginTransaction()
-        transaction.add(R.id.main_flContainer, fragment)
-        transaction.attach(fragment)
-        transaction.show(fragment)
+        if (!fragment.isAdded) {
+            transaction.add(R.id.main_flContainer, fragment)
+        }
         this.presenter?.getFragmentMap()!!.forEach {
             if (null != it.value && fragment != it.value) {
-                transaction.detach(it.value)
+                transaction.hide(it.value)
             }
         }
+        transaction.show(fragment)
         transaction.commit()
     }
 

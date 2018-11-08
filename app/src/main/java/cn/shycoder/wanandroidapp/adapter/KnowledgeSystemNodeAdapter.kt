@@ -26,7 +26,8 @@ class KnowledgeSystemNodeAdapter(list: MutableList<KnowledgeNode>)
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val item = list[position]
+        holder!!.tvKnowledgeSystemNodeTitle.text = item.name
     }
 
     class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {

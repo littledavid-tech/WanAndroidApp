@@ -30,7 +30,7 @@ class KnowledgeSystemPresenterImpl() : KnowledgeSystemContract.Presenter {
         KnowledgeSystemService
                 .instance
                 .getAllKnowledgeNode()
-                .observeOn(Schedulers.io())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         {
