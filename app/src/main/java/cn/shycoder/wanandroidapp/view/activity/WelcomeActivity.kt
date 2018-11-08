@@ -1,26 +1,18 @@
 package cn.shycoder.wanandroidapp.view.activity
 
+import android.os.Bundle
 import android.os.Handler
+import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
 import butterknife.BindView
 import cn.shycoder.wanandroidapp.view.BaseActivity
 import cn.shycoder.wanandroidapp.R
 
-class WelcomeActivity : BaseActivity() {
+class WelcomeActivity : AppCompatActivity() {
 
-    override fun getLayoutResId(): Int {
-        return R.layout.welcome_activity
-    }
-
-    /**
-     * 显示一个并没有什么卵用的欢迎界面
-     * 浪费2秒时间
-     * */
-    override fun doInit() {
-//        Handler().postDelayed({
-//            MainActivity.show(this)
-//            this.finish()
-//        }, 2000)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        this.setContentView(R.layout.welcome_activity)
         MainActivity.show(this)
     }
 

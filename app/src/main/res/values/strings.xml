@@ -13,4 +13,7 @@
     <string name="main_nav_menu_about">关于</string>
     <string name="main_nav_menu_login">登录</string>
     <string name="main_nav_menu_logout">退出</string>
+    <string name="main_bottom_nav_home">首页</string>
+    <string name="main_bottom_nav_knowledge_system">体系</string>
+    <string name="main_bottom_nav_project">项目</string>
 </resources>

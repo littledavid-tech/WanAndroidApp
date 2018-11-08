@@ -2,26 +2,36 @@ package cn.shycoder.wanandroidapp.view.activity
 
 import android.content.Context
 import android.content.Intent
+import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.NavigationView
-import android.support.design.widget.TabLayout
 import android.support.v4.widget.DrawerLayout
 import android.view.Gravity
 import butterknife.BindString
 import butterknife.BindView
 import cn.shycoder.wanandroidapp.view.BaseToolBarActivity
 import cn.shycoder.wanandroidapp.R
-import cn.shycoder.wanandroidapp.view.fragment.ArticleFragment
+import cn.shycoder.wanandroidapp.presenter.HomePresenterImpl
+import cn.shycoder.wanandroidapp.presenter.contract.HomeContract
 
-class MainActivity : BaseToolBarActivity() {
+class MainActivity :
+        BaseToolBarActivity<HomeContract.HomePresenter>(), HomeContract.HomeView {
+    override fun showFragment() {
+
+    }
+
 
     @BindString(R.string.app_name)
     lateinit var appName: String
+
 
     @BindView(R.id.main_dl_parent)
     lateinit var dlParent: DrawerLayout
 
     @BindView(R.id.main_nav)
     lateinit var nav: NavigationView
+
+    @BindView(R.id.main_bottom_nav)
+    lateinit var bottomNav: BottomNavigationView
 
     override fun getToolbarTitle(): String {
         return appName
@@ -35,9 +45,10 @@ class MainActivity : BaseToolBarActivity() {
         super.doInit()
         //设置Home的图标
         this.actionBar.setHomeAsUpIndicator(R.drawable.main_nav_menu)
-        val transaction = this.supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.main_flContainer, ArticleFragment())
-        transaction.commit()
+    }
+
+    private fun doInitBottomNav() {
+
     }
 
     override fun onHomeSelected() {
@@ -47,6 +58,10 @@ class MainActivity : BaseToolBarActivity() {
 
     override fun canBack(): Boolean {
         return false
+    }
+
+    override fun createPresenter(): HomeContract.HomePresenter {
+        return HomePresenterImpl().apply { view = this@MainActivity }
     }
 
     companion object {
