@@ -12,7 +12,7 @@ import cn.shycoder.wanandroidapp.presenter.contract.ArticleContract
 /**
  * Created by ITSoftware on 11/7/2018.
  */
-class ArticleFragment
+class   ArticleFragment
     : BaseRecyclerViewFragment<ArticleContract.ArticlePresenter>(),
         ArticleContract.ArticleView {
 
