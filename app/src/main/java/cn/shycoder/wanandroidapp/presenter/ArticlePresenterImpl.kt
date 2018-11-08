@@ -1,12 +1,11 @@
 package cn.shycoder.wanandroidapp.presenter
 
 import cn.shycoder.wanandroidapp.model.api.HomeArticleService
-import cn.shycoder.wanandroidapp.model.entity.Article
 import cn.shycoder.wanandroidapp.presenter.contract.ArticleContract
+import com.orhanobut.logger.Logger
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import java.util.function.Consumer
 
 /**
  * Created by ITSoftware on 11/7/2018.
@@ -43,6 +42,8 @@ class ArticlePresenterImpl(override var view: ArticleContract.ArticleView?)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         {
+                            this.totalPage = it.data?.pageCount!!
+                            Logger.i("Current Page:${this.currentPage} Total Page Count${this.totalPage}")
                             if (isRefresh)
                                 view?.refreshedData(it.data!!.datas!!)
                             else

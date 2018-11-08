@@ -12,7 +12,7 @@ import cn.shycoder.wanandroidapp.presenter.contract.ArticleContract
 /**
  * Created by ITSoftware on 11/7/2018.
  */
-class   ArticleFragment
+class ArticleFragment
     : BaseRecyclerViewFragment<ArticleContract.ArticlePresenter>(),
         ArticleContract.ArticleView {
 
@@ -30,16 +30,19 @@ class   ArticleFragment
     override fun loadedData(list: List<Article>) {
         if (adapter == null) {
             adapter = ArticleAdapter(list.toMutableList())
-            recyclerView.setAdapter(adapter)
+            recyclerView.adapter = adapter
+            recyclerView.loadMoreComplete()
         } else {
             adapter!!.addList(list)
+            recyclerView.loadMoreComplete()
         }
     }
 
     override fun refreshedData(list: List<Article>) {
         adapter = null
         adapter = ArticleAdapter(list.toMutableList())
-        recyclerView.setAdapter(adapter)
+        recyclerView.adapter = adapter
+        recyclerView.refreshComplete()
     }
 
     override fun createPresenter(): ArticleContract.ArticlePresenter {

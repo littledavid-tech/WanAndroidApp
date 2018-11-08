@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.widget.Toast
+import com.orhanobut.logger.AndroidLogAdapter
 
 /**
  * 自定义的Application类，用来获取一些全局的信息
@@ -14,6 +15,14 @@ class MyApplication : Application() {
         super.onCreate()
         context = this.applicationContext
         toast = Toast.makeText(context, "", Toast.LENGTH_SHORT)
+        initLogger()
+    }
+
+    /**
+     * 初始化Logger
+     * */
+    private fun initLogger() {
+        com.orhanobut.logger.Logger.addLogAdapter(AndroidLogAdapter())
     }
 
     companion object {

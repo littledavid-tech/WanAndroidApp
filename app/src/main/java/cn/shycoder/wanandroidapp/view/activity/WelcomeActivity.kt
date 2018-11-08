@@ -8,9 +8,6 @@ import cn.shycoder.wanandroidapp.R
 
 class WelcomeActivity : BaseActivity() {
 
-    @BindView(R.id.tv)
-    lateinit var tv: TextView
-
     override fun getLayoutResId(): Int {
         return R.layout.welcome_activity
     }
@@ -20,10 +17,11 @@ class WelcomeActivity : BaseActivity() {
      * 浪费2秒时间
      * */
     override fun doInit() {
-        Handler().postDelayed({
-            MainActivity.show(this)
-            this.finish()
-        }, 2000)
+//        Handler().postDelayed({
+//            MainActivity.show(this)
+//            this.finish()
+//        }, 2000)
+        MainActivity.show(this)
     }
 
     override fun onBackPressed() {

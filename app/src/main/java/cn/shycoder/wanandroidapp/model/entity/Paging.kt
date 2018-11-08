@@ -8,7 +8,7 @@ class Paging<T>() {
     var datas: List<T>? = null
     var offset: Int = 0
     var over: Boolean = false
-    var pcageCount = 1
+    var pageCount = 1
     var size: Int = 20
     var total: Int = 0
 }
