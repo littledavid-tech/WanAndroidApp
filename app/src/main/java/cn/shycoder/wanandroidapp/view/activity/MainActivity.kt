@@ -35,9 +35,9 @@ class MainActivity : BaseToolBarActivity() {
         super.doInit()
         //设置Home的图标
         this.actionBar.setHomeAsUpIndicator(R.drawable.main_nav_menu)
-//        val transaction = this.supportFragmentManager.beginTransaction()
-//        transaction.replace(R.id.main_flContainer, ArticleFragment())
-//        transaction.commit()
+        val transaction = this.supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.main_flContainer, ArticleFragment())
+        transaction.commit()
     }
 
     override fun onHomeSelected() {

@@ -17,7 +17,7 @@ abstract class BaseFragment : Fragment() {
     private lateinit var mUnbinder: Unbinder
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(getLayoutResId(), container)
+        val view = inflater!!.inflate(getLayoutResId(), container, false)
         mUnbinder = ButterKnife.bind(this, view)
         return view
     }

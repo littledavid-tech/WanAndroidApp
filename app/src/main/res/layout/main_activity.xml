@@ -11,7 +11,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <include layout="@layout/app_toolbar" />
 
@@ -20,10 +21,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <fragment
-                android:name="cn.shycoder.wanandroidapp.view.fragment.ArticleFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+            <!--<fragment-->
+            <!--android:name="cn.shycoder.wanandroidapp.view.fragment.ArticleFragment"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent" />-->
         </FrameLayout>
     </LinearLayout>
 
