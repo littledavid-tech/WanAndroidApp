@@ -18,7 +18,6 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.orhanobut.logger.Logger
-import com.squareup.picasso.Picasso
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -138,6 +137,8 @@ class WelcomeActivity
     private fun beginDelayTask() {
         Handler().postDelayed({
             MainActivity.show(this)
+            this.mDisposable?.dispose()
+            this.finish()
         }, 2000)
     }
 
@@ -150,6 +151,7 @@ class WelcomeActivity
      * */
     override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?,
                               isFirstResource: Boolean): Boolean {
+        Logger.d("Failed to load image from network")
         loadDefaultImg()
         return true
     }
@@ -159,8 +161,9 @@ class WelcomeActivity
      * */
     override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?,
                                  dataSource: DataSource?, isFirstResource: Boolean): Boolean {
+        Logger.d("Load image from network successfully!")
         beginDelayTask()
-        return true
+        return false
     }
 
 }

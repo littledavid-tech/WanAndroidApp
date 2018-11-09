@@ -12,8 +12,7 @@ import butterknife.ButterKnife
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.model.entity.Article
 import cn.shycoder.wanandroidapp.utils.MyApplication
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.recycler_view_item_home_article.view.*
+import com.bumptech.glide.Glide
 
 
 /**
@@ -39,9 +38,9 @@ class ArticleAdapter(list: MutableList<Article>)
 
         //根据是否收藏，设置不同的 Drawable
         if (item.isCollect) {
-            Picasso.get().load(R.drawable.app_like).into(holder.ivLike)
+            Glide.with(MyApplication.context).load(R.drawable.app_like).into(holder.ivLike)
         } else {
-            Picasso.get().load(R.drawable.app_unlike).into(holder.ivLike)
+            Glide.with(MyApplication.context).load(R.drawable.app_unlike).into(holder.ivLike)
         }
     }
 

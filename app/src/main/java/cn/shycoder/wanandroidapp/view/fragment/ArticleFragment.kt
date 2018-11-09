@@ -20,10 +20,6 @@ class ArticleFragment
         presenter?.loadMore()
     }
 
-    override fun getLayoutResId(): Int {
-        return R.layout.recycler_view_fragment
-    }
-
     override fun loadedData(list: List<Article>) {
         if (adapter == null) {
             adapter = ArticleAdapter(list.toMutableList())

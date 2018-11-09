@@ -27,8 +27,8 @@ abstract class BaseRecyclerViewFragment<T : BaseRecyclerViewContract.Presenter<*
     lateinit var btnReturnTop: FloatingActionButton
 
     override fun onDestroy() {
-        super.onDestroy()
         recyclerView.destroy()
+        super.onDestroy()
     }
 
     override fun getLayoutResId(): Int {
