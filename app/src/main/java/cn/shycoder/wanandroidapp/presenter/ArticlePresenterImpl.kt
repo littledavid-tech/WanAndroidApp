@@ -1,8 +1,12 @@
 package cn.shycoder.wanandroidapp.presenter
 
 import cn.shycoder.wanandroidapp.model.api.HomeArticleService
+import cn.shycoder.wanandroidapp.model.entity.Article
+import cn.shycoder.wanandroidapp.model.entity.Paging
+import cn.shycoder.wanandroidapp.model.entity.SuperEntity
 import cn.shycoder.wanandroidapp.presenter.contract.ArticleContract
 import com.orhanobut.logger.Logger
+import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
