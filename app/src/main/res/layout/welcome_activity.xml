@@ -2,16 +2,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary"
     tools:context="cn.shycoder.wanandroidapp.view.activity.WelcomeActivity">
 
+    <ImageView
+        android:id="@+id/welcome_ivBingWallPaper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
     <TextView
-        android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="50dp"
         android:text="@string/app_name"
-        android:textColor="#FFFFFF"
-        android:textSize="50dp" />
-
+        android:textColor="@color/white"
+        android:textSize="40dp" />
 </FrameLayout>

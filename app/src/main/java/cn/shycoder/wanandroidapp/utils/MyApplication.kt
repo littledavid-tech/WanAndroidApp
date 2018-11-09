@@ -3,6 +3,8 @@ package cn.shycoder.wanandroidapp.utils
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
+import android.view.Display
 import android.widget.Toast
 import com.orhanobut.logger.AndroidLogAdapter
 
@@ -39,5 +41,20 @@ class MyApplication : Application() {
          * 所有的Toast操作都应该使用此Toast对象
          * */
         lateinit var toast: Toast
+
+        /**
+         * 当前APP的SP的名称
+         * */
+        val appSPName = "play_android_sp"
+
+        fun getStringFromSP(key: String, defaultValue: String = ""): String {
+            val sp = context.getSharedPreferences(appSPName, Context.MODE_PRIVATE)
+            return sp.getString(key, defaultValue)!!
+        }
+
+        fun putStringToSP(key: String, value: String) {
+            val sp = context.getSharedPreferences(appSPName, Context.MODE_PRIVATE)
+            sp.edit().putString(key, value).apply()
+        }
     }
 }
