@@ -26,7 +26,8 @@
         </activity>
         <activity android:name=".view.activity.MainActivity" />
         <activity android:name=".view.BaseToolBarActivity" />
-        <activity android:name=".MainActivityTemp"></activity>
+        <activity android:name=".MainActivityTemp" />
+        <activity android:name=".view.activity.SubKnowledgeSystemActivity"></activity>
     </application>
 
 </manifest>

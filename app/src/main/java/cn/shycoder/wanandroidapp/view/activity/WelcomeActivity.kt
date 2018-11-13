@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import butterknife.BindView
 import butterknife.ButterKnife
+import butterknife.Unbinder
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.utils.DateTimeUtils
 import cn.shycoder.wanandroidapp.utils.MyApplication
@@ -33,18 +34,24 @@ class WelcomeActivity
     @BindView(R.id.welcome_ivBingWallPaper)
     lateinit var ivWallPaper: ImageView
 
+    private var mUnbinder: Unbinder? = null
+
     private var mDisposable: Disposable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.setContentView(R.layout.welcome_activity)
-        ButterKnife.bind(this)
+        this.mUnbinder = ButterKnife.bind(this)
         loadWelcomeImage()
     }
 
+    /**
+     * 回收一些资源
+     * */
     override fun onDestroy() {
         super.onDestroy()
         this.mDisposable?.dispose()
+        this.mUnbinder?.unbind()
     }
 
     /**
@@ -131,9 +138,15 @@ class WelcomeActivity
      * 当没有WiFi的时候，下载一个默认的图片
      * */
     private fun loadDefaultImg() {
-        Glide.with(this).load(R.drawable.default_welcome_wallpaper).into(ivWallPaper)
+        Glide.with(this)
+                .load(R.drawable.default_welcome_wallpaper)
+                .listener(this)
+                .into(ivWallPaper)
     }
 
+    /**
+     * 启动一个延时任务2秒之后跳转到主界面，并结束当前的Activity
+     * */
     private fun beginDelayTask() {
         Handler().postDelayed({
             MainActivity.show(this)
@@ -153,6 +166,7 @@ class WelcomeActivity
                               isFirstResource: Boolean): Boolean {
         Logger.d("Failed to load image from network")
         loadDefaultImg()
+        beginDelayTask()
         return true
     }
 
