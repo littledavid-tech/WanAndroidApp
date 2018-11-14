@@ -1,14 +1,11 @@
 package cn.shycoder.wanandroidapp.view.fragment
 
-import cn.shycoder.wanandroidapp.adapter.KnowledgeSystemNodeAdapter
+import cn.shycoder.wanandroidapp.adapter.recyclerview.KnowledgeSystemNodeAdapter
 import cn.shycoder.wanandroidapp.model.entity.KnowledgeNode
 import cn.shycoder.wanandroidapp.presenter.KnowledgeSystemPresenterImpl
 import cn.shycoder.wanandroidapp.presenter.contract.KnowledgeSystemContract
-import cn.shycoder.wanandroidapp.view.BaseFragment
 
-/**
- * Created by ITSoftware on 11/8/2018.
- */
+
 class KnowledgeSystemFragment :
         BaseRecyclerViewFragment<KnowledgeSystemContract.Presenter>(),
         KnowledgeSystemContract.View {
@@ -21,7 +18,7 @@ class KnowledgeSystemFragment :
     }
 
     override fun loadedKnowledge(list: List<KnowledgeNode>) {
-        val adapter = KnowledgeSystemNodeAdapter(list.toMutableList())
+        val adapter = KnowledgeSystemNodeAdapter(this.context, list.toMutableList())
         recyclerView.adapter = adapter
         recyclerView.refreshComplete()
     }

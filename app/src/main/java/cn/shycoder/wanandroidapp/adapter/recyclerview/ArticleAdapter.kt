@@ -1,6 +1,6 @@
-package cn.shycoder.wanandroidapp.adapter
+package cn.shycoder.wanandroidapp.adapter.recyclerview
 
-import android.annotation.SuppressLint
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -12,14 +12,15 @@ import butterknife.ButterKnife
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.model.entity.Article
 import cn.shycoder.wanandroidapp.utils.MyApplication
+import cn.shycoder.wanandroidapp.utils.MyApplication.Companion.context
 import com.bumptech.glide.Glide
 
 
 /**
  * 首页文章的适配器
  * */
-class ArticleAdapter(list: MutableList<Article>)
-    : BaseRecyclerViewAdapter<Article, ArticleAdapter.ViewHolder>(list) {
+class ArticleAdapter(context: Context, list: MutableList<Article>)
+    : BaseRecyclerViewAdapter<Article, ArticleAdapter.ViewHolder>(context, list) {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view = LayoutInflater

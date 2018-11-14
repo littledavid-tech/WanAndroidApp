@@ -20,12 +20,12 @@ class HomePresenterImpl()
     override fun createHomeFragment(menuId: Int): Fragment {
         var fragment = mFragmentMap[menuId]
         if (null == fragment) {
-            when (menuId) {
+            fragment = when (menuId) {
                 R.id.main_bottom_nav_menuHome -> {
-                    fragment = ArticleFragment()
+                    ArticleFragment()
                 }
                 R.id.main_bottom_nav_menuKnowledge -> {
-                    fragment = KnowledgeSystemFragment()
+                    KnowledgeSystemFragment()
                 }
                 else -> {
                     throw IllegalArgumentException("Unknown menu id!")

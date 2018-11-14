@@ -23,15 +23,6 @@ class MainActivity :
     @BindString(R.string.app_name)
     lateinit var appName: String
 
-//    @BindString(R.string.main_bottom_nav_home)
-//    lateinit var bottom_nav_home: String
-//
-//    @BindString(R.string.main_bottom_nav_knowledge_system)
-//    lateinit var bottom_nav_knowledge: String
-//
-//    @BindString(R.string.main_bottom_nav_project)
-//    lateinit var bottom_nav_project: String
-
     @BindView(R.id.main_dl_parent)
     lateinit var dlParent: DrawerLayout
 
@@ -88,8 +79,11 @@ class MainActivity :
      * 将碎片显示处理啊
      * */
     override fun showFragment(fragment: Fragment) {
+        Logger.d("Create Fragment")
+
         val transaction = this.mFragmentManager.beginTransaction()
         if (!fragment.isAdded) {
+            Logger.d("Add Fragment")
             transaction.add(R.id.main_flContainer, fragment)
         }
         this.presenter?.getFragmentMap()!!.forEach {

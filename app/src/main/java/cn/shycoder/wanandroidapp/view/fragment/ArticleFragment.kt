@@ -1,10 +1,10 @@
 package cn.shycoder.wanandroidapp.view.fragment
 
-import cn.shycoder.wanandroidapp.R
-import cn.shycoder.wanandroidapp.adapter.ArticleAdapter
+import cn.shycoder.wanandroidapp.adapter.recyclerview.ArticleAdapter
 import cn.shycoder.wanandroidapp.model.entity.Article
 import cn.shycoder.wanandroidapp.presenter.ArticlePresenterImpl
 import cn.shycoder.wanandroidapp.presenter.contract.ArticleContract
+import com.orhanobut.logger.Logger
 
 /**
  * 显示首页文章的碎片
@@ -17,12 +17,13 @@ class ArticleFragment
 
     override fun doInit() {
         super.doInit()
+        Logger.i("Home Article Load")
         presenter?.loadMore()
     }
 
     override fun loadedData(list: List<Article>) {
         if (adapter == null) {
-            adapter = ArticleAdapter(list.toMutableList())
+            adapter = ArticleAdapter(this.context, list.toMutableList())
             recyclerView.adapter = adapter
             recyclerView.loadMoreComplete()
         } else {
@@ -33,7 +34,7 @@ class ArticleFragment
 
     override fun refreshedData(list: List<Article>) {
         adapter = null
-        adapter = ArticleAdapter(list.toMutableList())
+        adapter = ArticleAdapter(this.context, list.toMutableList())
         recyclerView.adapter = adapter
         recyclerView.refreshComplete()
     }

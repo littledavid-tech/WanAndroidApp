@@ -10,12 +10,12 @@
         <item name="android:textColorSecondary">@color/secondary_text</item>
         <item name="android:divider">@color/divider</item>
     </style>
-
+    <!--APP中所有标题的Style-->
     <style name="TitleTextView" parent="AppTheme">
         <item name="android:textColor">@color/primary_text</item>
         <item name="android:textSize">19dp</item>
     </style>
-
+    <!--APP中所有标签的Style-->
     <style name="AppTagTextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -27,10 +27,16 @@
         <item name="android:textColor">@color/red</item>
         <item name="android:textSize">10dp</item>
     </style>
-
+    <!--APP中所有超链接的Style-->
     <style name="AppLinkTextView">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/like_color</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+    <!--APP中所有附加信息的Style-->
+    <style name="AppSecondTextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondary_text</item>
         <item name="android:textSize">12dp</item>
     </style>
 </resources>

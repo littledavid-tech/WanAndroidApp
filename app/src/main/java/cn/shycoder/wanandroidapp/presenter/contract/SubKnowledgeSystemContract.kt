@@ -1,6 +1,7 @@
 package cn.shycoder.wanandroidapp.presenter.contract
 
 import android.content.Intent
+import cn.shycoder.wanandroidapp.model.bean.KnowledgeSystemTab
 
 /**
  * Created by ShyCoder on 11/13/2018.
@@ -11,7 +12,7 @@ interface SubKnowledgeSystemContract {
         /**
          * 初始化TabLayout
          * */
-        fun inittablayout(list: List<String>)
+        fun initTabLayout(list: List<KnowledgeSystemTab>)
 
         fun initViewpager()
     }

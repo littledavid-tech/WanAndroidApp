@@ -1,28 +1,23 @@
 package cn.shycoder.wanandroidapp.presenter
 
-import cn.shycoder.wanandroidapp.model.api.HomeArticleService
-import cn.shycoder.wanandroidapp.model.entity.Article
-import cn.shycoder.wanandroidapp.model.entity.Paging
-import cn.shycoder.wanandroidapp.model.entity.SuperEntity
-import cn.shycoder.wanandroidapp.presenter.contract.ArticleContract
+import cn.shycoder.wanandroidapp.model.api.KnowledgeSystemArticleService
+import cn.shycoder.wanandroidapp.presenter.contract.KnowledgeSystemArticleContract
 import com.orhanobut.logger.Logger
-import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 /**
- * Created by ITSoftware on 11/7/2018.
- */
-class ArticlePresenterImpl
-    : ArticleContract.Presenter {
+ * 知识体系下的文章的Presenter
+ * @param cid 文章的分类id
+ * */
+class KnowledgeSystemArticlePresenterImpl(val cid: Int) : KnowledgeSystemArticleContract.Presenter {
 
-    override var view: ArticleContract.View? = null
+    override var view: KnowledgeSystemArticleContract.View? = null
     override var disposable: Disposable? = null
 
     private var mCurrentPageIndex = 0
     private var mTotalPageCount = 1
-
 
     override fun loadMore() {
         if (mCurrentPageIndex >= mTotalPageCount) {
@@ -41,14 +36,10 @@ class ArticlePresenterImpl
         loadData(true)
     }
 
-    /**
-     * 加载首页文章的信息
-     * @param isRefresh 是否是刷新操作
-     * */
     private fun loadData(isRefresh: Boolean) {
-        HomeArticleService
+        KnowledgeSystemArticleService
                 .instance
-                .getArticles(mCurrentPageIndex)
+                .getArticles(mCurrentPageIndex, this.cid)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -62,10 +53,8 @@ class ArticlePresenterImpl
                                 view?.loadedData(it.data!!.datas!!)
                         },
                         {
-
                         },
                         {
-
                         },
                         {
                             disposable = it
