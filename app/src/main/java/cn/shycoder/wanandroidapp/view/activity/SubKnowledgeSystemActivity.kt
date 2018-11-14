@@ -40,6 +40,9 @@ class SubKnowledgeSystemActivity
         for (item in list) {
             tabLayout.addTab(tabLayout.newTab().setText(item.title).setTag(item.cId))
         }
+        this.tabLayout.setupWithViewPager(this.vpKnowledgeType)
+        //设置缓存数量，解决ViewPager+Fragment超过3次以上后显示空白的问题
+        this.vpKnowledgeType.offscreenPageLimit = this.tabList.size
     }
 
     override fun initViewpager() {

@@ -10,7 +10,8 @@
         android:id="@+id/appbarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_scrollFlags="scroll|enterAlways"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         <android.support.v7.widget.Toolbar
@@ -23,8 +24,8 @@
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabMode="scrollable"
             app:tabIndicatorColor="#cc1774"
+            app:tabMode="scrollable"
             app:tabTextColor="@color/white" />
 
     </android.support.design.widget.AppBarLayout>

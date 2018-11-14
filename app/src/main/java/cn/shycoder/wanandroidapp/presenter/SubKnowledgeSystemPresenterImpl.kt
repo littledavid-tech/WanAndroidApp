@@ -26,5 +26,6 @@ class SubKnowledgeSystemPresenterImpl() : SubKnowledgeSystemContract.Presenter {
             list.add(tab)
         }
         view!!.initTabLayout(list)
+        view!!.initViewpager()
     }
 }

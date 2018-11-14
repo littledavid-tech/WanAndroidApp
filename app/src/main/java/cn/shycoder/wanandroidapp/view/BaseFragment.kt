@@ -24,9 +24,19 @@ abstract class BaseFragment<T : BaseContract.Presenter<*>> : Fragment() {
      * */
     var presenter: T? = null
 
+//    private var mView: View? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+//        if (mView != null) {
+//            val parent = mView!!.parent as ViewGroup?
+//            parent?.removeView(mView)
+//            return mView
+//        }
+//        mView = inflater.inflate(getLayoutResId(), container, false)
+//        mUnbinder = ButterKnife.bind(this, mView!!)
+//        return mView
         val view = inflater.inflate(getLayoutResId(), container, false)
-        mUnbinder = ButterKnife.bind(this, view)
+        mUnbinder = ButterKnife.bind(this, view!!)
         return view
     }
 

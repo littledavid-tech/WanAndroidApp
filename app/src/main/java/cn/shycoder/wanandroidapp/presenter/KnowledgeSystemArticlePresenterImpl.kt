@@ -37,6 +37,8 @@ class KnowledgeSystemArticlePresenterImpl(val cid: Int) : KnowledgeSystemArticle
     }
 
     private fun loadData(isRefresh: Boolean) {
+        Logger.i("Load knowledge system articles from network")
+
         KnowledgeSystemArticleService
                 .instance
                 .getArticles(mCurrentPageIndex, this.cid)
@@ -44,6 +46,8 @@ class KnowledgeSystemArticlePresenterImpl(val cid: Int) : KnowledgeSystemArticle
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         {
+
+                            Logger.i("Loaded knowledge system data!")
                             this.mTotalPageCount = it.data?.pageCount!!
                             Logger.i("Current Page:${this.mCurrentPageIndex} " +
                                     "Total Page Count${this.mTotalPageCount}")
@@ -53,6 +57,8 @@ class KnowledgeSystemArticlePresenterImpl(val cid: Int) : KnowledgeSystemArticle
                                 view?.loadedData(it.data!!.datas!!)
                         },
                         {
+                            Logger.e("Meet a error in knowledge system!")
+                            it.printStackTrace()
                         },
                         {
                         },

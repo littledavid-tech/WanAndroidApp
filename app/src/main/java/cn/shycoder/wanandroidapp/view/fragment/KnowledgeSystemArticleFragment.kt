@@ -1,12 +1,12 @@
 package cn.shycoder.wanandroidapp.view.fragment
 
 import android.annotation.SuppressLint
-import android.support.v4.app.Fragment
 import cn.shycoder.wanandroidapp.adapter.recyclerview.KnowledgeSystemArticleAdapter
 import cn.shycoder.wanandroidapp.model.bean.KnowledgeSystemTab
 import cn.shycoder.wanandroidapp.model.entity.Article
 import cn.shycoder.wanandroidapp.presenter.KnowledgeSystemArticlePresenterImpl
 import cn.shycoder.wanandroidapp.presenter.contract.KnowledgeSystemArticleContract
+import com.orhanobut.logger.Logger
 
 @SuppressLint("ValidFragment")
 class KnowledgeSystemArticleFragment(val tab: KnowledgeSystemTab)
@@ -14,6 +14,11 @@ class KnowledgeSystemArticleFragment(val tab: KnowledgeSystemTab)
         , KnowledgeSystemArticleContract.View {
 
     var adapter: KnowledgeSystemArticleAdapter? = null
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Logger.i("Knowledge System Article Fragment onDestroy")
+    }
 
     override fun doInit() {
         super.doInit()

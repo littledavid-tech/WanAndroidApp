@@ -6,9 +6,6 @@ import butterknife.ButterKnife
 import butterknife.Unbinder
 import cn.shycoder.wanandroidapp.presenter.contract.BaseContract
 
-/**
- * Created by ITSoftware on 11/6/2018.
- */
 abstract class BaseActivity<T : BaseContract.Presenter<*>> : AppCompatActivity() {
 
     private lateinit var mUnbinder: Unbinder
