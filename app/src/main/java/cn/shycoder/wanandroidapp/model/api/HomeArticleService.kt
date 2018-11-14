@@ -14,7 +14,7 @@ interface HomeArticleService {
     /**
      * 以分页查询的方式获取首页的Articles
      * */
-    @GET("/article/tabList/{page}/json")
+    @GET("/article/list/{page}/json")
     fun getArticles(@Path("page") pageIndex: Int): io.reactivex.Observable<SuperEntity<Paging<Article>>>
 
     companion object {

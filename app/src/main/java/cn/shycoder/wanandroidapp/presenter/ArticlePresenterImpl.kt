@@ -11,9 +11,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-/**
- * Created by ITSoftware on 11/7/2018.
- */
 class ArticlePresenterImpl
     : ArticleContract.Presenter {
 
@@ -46,6 +43,7 @@ class ArticlePresenterImpl
      * @param isRefresh 是否是刷新操作
      * */
     private fun loadData(isRefresh: Boolean) {
+        Logger.i("Load data from network")
         HomeArticleService
                 .instance
                 .getArticles(mCurrentPageIndex)
@@ -53,6 +51,7 @@ class ArticlePresenterImpl
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         {
+                            Logger.i("Loaded data in presenter!")
                             this.mTotalPageCount = it.data?.pageCount!!
                             Logger.i("Current Page:${this.mCurrentPageIndex} " +
                                     "Total Page Count${this.mTotalPageCount}")
@@ -62,7 +61,7 @@ class ArticlePresenterImpl
                                 view?.loadedData(it.data!!.datas!!)
                         },
                         {
-
+                            Logger.e("Meet a error in RxJava")
                         },
                         {
 
