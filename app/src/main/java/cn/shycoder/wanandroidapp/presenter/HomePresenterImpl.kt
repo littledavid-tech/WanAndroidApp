@@ -5,6 +5,7 @@ import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.presenter.contract.HomeContract
 import cn.shycoder.wanandroidapp.view.fragment.ArticleFragment
 import cn.shycoder.wanandroidapp.view.fragment.KnowledgeSystemFragment
+import cn.shycoder.wanandroidapp.view.fragment.ProjectFragment
 import io.reactivex.disposables.Disposable
 
 
@@ -26,6 +27,9 @@ class HomePresenterImpl()
                 }
                 R.id.main_bottom_nav_menuKnowledge -> {
                     KnowledgeSystemFragment()
+                }
+                R.id.main_bottom_nav_menuProject -> {
+                    ProjectFragment()
                 }
                 else -> {
                     throw IllegalArgumentException("Unknown menu id!")

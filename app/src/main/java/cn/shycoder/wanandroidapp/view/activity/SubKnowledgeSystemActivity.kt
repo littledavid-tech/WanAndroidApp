@@ -23,10 +23,13 @@ class SubKnowledgeSystemActivity
     @BindView(R.id.tabLayout)
     lateinit var tabLayout: TabLayout
 
-    lateinit var tabList: List<KnowledgeSystemTab>
+    /**
+     * 知识体系二级分类的项
+     * */
+    private lateinit var tabList: List<KnowledgeSystemTab>
 
     override fun getLayoutResId(): Int {
-        return R.layout.activity_sub_knowledge_system
+        return R.layout.sub_knowledge_system_activity
     }
 
     override fun doInit() {

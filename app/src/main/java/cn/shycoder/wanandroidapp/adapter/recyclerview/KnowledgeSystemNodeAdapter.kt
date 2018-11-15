@@ -24,7 +24,7 @@ class KnowledgeSystemNodeAdapter(context: Context, list: MutableList<KnowledgeNo
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view = LayoutInflater
                 .from(MyApplication.context)
-                .inflate(R.layout.recycler_view_item_knowledge, parent, false)
+                .inflate(R.layout.recycler_view_list_item_knowledge, parent, false)
         return ViewHolder(view)
     }
 

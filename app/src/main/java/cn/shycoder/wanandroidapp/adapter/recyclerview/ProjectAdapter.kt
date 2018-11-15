@@ -14,50 +14,49 @@ import cn.shycoder.wanandroidapp.model.entity.Article
 import cn.shycoder.wanandroidapp.utils.MyApplication
 import com.bumptech.glide.Glide
 
-
-class KnowledgeSystemArticleAdapter(context: Context, list: MutableList<Article>)
-    : BaseRecyclerViewAdapter<Article, KnowledgeSystemArticleAdapter.ViewHolder>(context, list) {
-
+/**
+ * Created by ShyCoder on 11/15/2018.
+ */
+class ProjectAdapter(context: Context, list: MutableList<Article>)
+    : BaseRecyclerViewAdapter<Article, ProjectAdapter.ViewHolder>(context, list) {
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view = LayoutInflater
                 .from(MyApplication.context)
-                .inflate(R.layout.recycler_view_list_item_knowledge_system_node_article,
-                        parent,
-                        false)
+                .inflate(
+                        R.layout.recycler_view_grid_item_project
+                        , parent
+                        , false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         val item = list[position]
-
-        holder!!.tvTitle.text = item.title
-        holder.tvAuthor.text = item.author
+        holder!!.tvAuthor.text = item.author
         holder.tvTime.text = item.niceDate
+        holder.tvTitle.text = item.title
 
-        //根据是否收藏，设置不同的 Drawable
-        if (item.isCollect) {
-            Glide.with(MyApplication.context).load(R.drawable.app_like).into(holder.ivLike)
-        } else {
-            Glide.with(MyApplication.context).load(R.drawable.app_unlike).into(holder.ivLike)
-        }
+        Glide.with(MyApplication.context)
+                .load(item.envelopePic)
+                .into(holder.ivCoverImg)
     }
 
     class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
 
-        @BindView(R.id.knowledge_system_article_item_tvTitle)
-        lateinit var tvTitle: TextView
-
-        @BindView(R.id.knowledge_system_article_item_tvAuthor)
+        @BindView(R.id.main_project_item_tvProjectAuthor)
         lateinit var tvAuthor: TextView
 
-        @BindView(R.id.knowledge_system_article_item_tvTime)
+        @BindView(R.id.main_project_item_tvTime)
         lateinit var tvTime: TextView
 
-        @BindView(R.id.knowledge_system_article_item_ivLike)
-        lateinit var ivLike: ImageView
+        @BindView(R.id.main_project_item_tvTitle)
+        lateinit var tvTitle: TextView
+
+        @BindView(R.id.main_project_item_ivCategoryCoverImg)
+        lateinit var ivCoverImg: ImageView
 
         init {
             ButterKnife.bind(this, itemView!!)
         }
+
     }
 }

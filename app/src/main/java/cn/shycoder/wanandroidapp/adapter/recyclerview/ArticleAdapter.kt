@@ -12,7 +12,6 @@ import butterknife.ButterKnife
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.model.entity.Article
 import cn.shycoder.wanandroidapp.utils.MyApplication
-import cn.shycoder.wanandroidapp.utils.MyApplication.Companion.context
 import com.bumptech.glide.Glide
 
 
@@ -25,7 +24,7 @@ class ArticleAdapter(context: Context, list: MutableList<Article>)
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view = LayoutInflater
                 .from(MyApplication.context)
-                .inflate(R.layout.recycler_view_item_home_article
+                .inflate(R.layout.recycler_view_list_item_home_article
                         , parent, false)
         return ViewHolder(view)
     }
