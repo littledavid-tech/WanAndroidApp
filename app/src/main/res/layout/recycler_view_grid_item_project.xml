@@ -51,7 +51,7 @@
             style="@style/TitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/main_project_item_ivCategoryCoverImg"
+            android:layout_below="@id/main_project_item_ivCoverImg"
             android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:maxLines="3" />

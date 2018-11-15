@@ -59,7 +59,7 @@ abstract class BaseToolBarActivity<T : BaseContract.Presenter<*>> : BaseActivity
         when (item!!.itemId) {
             android.R.id.home -> {
                 if (canBack()) {
-                    this.onDestroy()
+                    this.finish()
                 } else {
                     this.onHomeSelected()
                 }

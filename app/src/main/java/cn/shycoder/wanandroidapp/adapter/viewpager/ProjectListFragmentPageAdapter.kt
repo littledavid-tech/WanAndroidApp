@@ -4,7 +4,6 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import cn.shycoder.wanandroidapp.model.bean.ProjectTab
-import cn.shycoder.wanandroidapp.view.fragment.ProjectListFragment
 
 /**
  * Created by ShyCoder on 11/15/2018.
@@ -15,11 +14,12 @@ class ProjectListFragmentPageAdapter(fm: FragmentManager?, private val projectTa
     private val mFragmentMap = mutableMapOf<Int, Fragment>()
 
     override fun getItem(position: Int): Fragment {
-        val tab = this.projectTabs[position]
-        if (!mFragmentMap.containsKey(tab.id)) {
-            mFragmentMap[tab.id] = ProjectListFragment(tab.id)
-        }
-        return mFragmentMap[tab.id]!!
+//        val tab = this.projectTabs[position]
+//        if (!mFragmentMap.containsKey(tab.id)) {
+//            mFragmentMap[tab.id] = ProjectListFragment(tab.id)
+//        }
+//        return mFragmentMap[tab.id]!!
+        TODO()
     }
 
     override fun getCount(): Int {

@@ -13,7 +13,9 @@ import butterknife.ButterKnife
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.model.bean.ProjectTab
 import cn.shycoder.wanandroidapp.utils.MyApplication
+import cn.shycoder.wanandroidapp.view.activity.ProjectListActivity
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Glide.init
 import com.orhanobut.logger.Logger
 import java.util.*
 
@@ -39,7 +41,7 @@ class ProjectCategoryAdapter(context: Context, list: MutableList<ProjectTab>)
                 R.layout.recycler_view_grid_item_project_tab
                 , parent
                 , false)
-        return ViewHolder(view)
+        return ViewHolder(context, view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
@@ -51,7 +53,7 @@ class ProjectCategoryAdapter(context: Context, list: MutableList<ProjectTab>)
         holder.projectTab = item
     }
 
-    class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(val context: Context, itemView: View?) : RecyclerView.ViewHolder(itemView) {
 
         lateinit var projectTab: ProjectTab
 
@@ -66,6 +68,9 @@ class ProjectCategoryAdapter(context: Context, list: MutableList<ProjectTab>)
 
         init {
             ButterKnife.bind(this, itemView!!)
+            itemView.setOnClickListener {
+                ProjectListActivity.show(context, projectTab.name, projectTab.id)
+            }
         }
     }
 }

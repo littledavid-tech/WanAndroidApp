@@ -51,7 +51,7 @@ class ProjectAdapter(context: Context, list: MutableList<Article>)
         @BindView(R.id.main_project_item_tvTitle)
         lateinit var tvTitle: TextView
 
-        @BindView(R.id.main_project_item_ivCategoryCoverImg)
+        @BindView(R.id.main_project_item_ivCoverImg)
         lateinit var ivCoverImg: ImageView
 
         init {
