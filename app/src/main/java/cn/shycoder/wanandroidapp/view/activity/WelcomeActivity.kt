@@ -10,6 +10,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.Unbinder
 import cn.shycoder.wanandroidapp.R
+import cn.shycoder.wanandroidapp.SPKeyConst
 import cn.shycoder.wanandroidapp.utils.DateTimeUtils
 import cn.shycoder.wanandroidapp.utils.MyApplication
 import cn.shycoder.wanandroidapp.utils.NetworkUtils
@@ -81,7 +82,8 @@ class WelcomeActivity
                                     .load(t)
                                     .listener(this@WelcomeActivity)
                                     .into(ivWallPaper)
-                            MyApplication.putStringToSP(DateTimeUtils.getCurrentDate(), t)
+                            MyApplication.putStringToSP(DateTimeUtils.getCurrentDate() +
+                                    SPKeyConst.sp_key_bing_img_address, t)
                         }
 
                         override fun onError(e: Throwable) {

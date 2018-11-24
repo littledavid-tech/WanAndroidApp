@@ -5,6 +5,6 @@ package cn.shycoder.wanandroidapp.model.entity
  */
 open class SuperEntity<T> {
     var data: T? = null
-    var errorCount: Int = 0
+    var errorCode: Int = 0
     var errorMsg: String = ""
 }
