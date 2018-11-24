@@ -29,6 +29,7 @@
         <activity android:name=".view.activity.SubKnowledgeSystemActivity" />
         <activity android:name=".view.activity.BaseRecyclerViewActivity" />
         <activity android:name=".view.activity.ProjectListActivity" />
+        <activity android:name=".view.activity.LoginActivity" />
     </application>
 
 </manifest>

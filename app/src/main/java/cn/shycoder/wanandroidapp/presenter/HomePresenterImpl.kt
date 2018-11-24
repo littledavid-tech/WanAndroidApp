@@ -1,15 +1,18 @@
 package cn.shycoder.wanandroidapp.presenter
 
+import android.content.Context
 import android.support.v4.app.Fragment
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.presenter.contract.HomeContract
+import cn.shycoder.wanandroidapp.presenter.contract.LoginContract
+import cn.shycoder.wanandroidapp.view.activity.LoginActivity
 import cn.shycoder.wanandroidapp.view.fragment.ArticleFragment
 import cn.shycoder.wanandroidapp.view.fragment.KnowledgeSystemFragment
 import cn.shycoder.wanandroidapp.view.fragment.ProjectFragment
 import io.reactivex.disposables.Disposable
 
 
-class HomePresenterImpl()
+class HomePresenterImpl
     : HomeContract.Presenter {
 
     private var mFragmentMap: HashMap<Int, Fragment?> = hashMapOf()
@@ -44,8 +47,20 @@ class HomePresenterImpl()
         return mFragmentMap
     }
 
+    override fun disposeNavEvent(context: Context, menuId: Int) {
+        when (menuId) {
+            R.id.main_menu_my_login -> {//登录按钮的点击事件
+                LoginActivity.show(context)
+            }
+            else -> {
+            }
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         mFragmentMap.clear()
     }
+
+
 }

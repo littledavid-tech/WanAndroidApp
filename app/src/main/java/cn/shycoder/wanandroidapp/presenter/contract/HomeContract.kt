@@ -1,5 +1,6 @@
 package cn.shycoder.wanandroidapp.presenter.contract
 
+import android.content.Context
 import android.support.v4.app.Fragment
 
 
@@ -19,6 +20,11 @@ interface HomeContract {
         fun createHomeFragment(menuId: Int): android.support.v4.app.Fragment
 
         fun getFragmentMap(): Map<Int, Fragment?>
+
+        /**
+         * 处理NavigationView的点击事件
+         * */
+        fun disposeNavEvent(context: Context, menuId: Int)
 
         override fun onDestroy() {
             view = null

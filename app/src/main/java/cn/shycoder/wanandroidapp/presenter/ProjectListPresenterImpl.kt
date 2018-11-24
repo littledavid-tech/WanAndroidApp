@@ -20,7 +20,6 @@ class ProjectListPresenterImpl(val cid: Int) : ProjectListContract.Presenter {
     override fun loadMore() {
         if (mCurrentPageIndex > mTotalPageCount) {
             view?.enableLoadMore(false)
-            view!!.enableLoadMore(false)
             return
         }
         loadData(false)

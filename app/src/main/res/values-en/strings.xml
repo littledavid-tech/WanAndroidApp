@@ -16,4 +16,10 @@
     <string name="main_bottom_nav_home">Home</string>
     <string name="main_bottom_nav_knowledge_system">Knowledge</string>
     <string name="main_bottom_nav_project">Project</string>
+    <string name="login_text_username">Username</string>
+    <string name="login_text_password">Password</string>
+    <string name="login_btn_login">Login</string>
+    <string name="login_msg_login_failed">Failed to login</string>
+    <string name="login_msg_login_successfully">Login successfully</string>
+    <string name="login_msg_null_username_or_password">Username or password cannot be null!</string>
 </resources>

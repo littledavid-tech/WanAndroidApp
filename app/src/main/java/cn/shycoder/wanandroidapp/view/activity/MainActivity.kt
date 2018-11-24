@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.widget.DrawerLayout
 import android.view.Gravity
+import android.view.MenuItem
 import butterknife.BindString
 import butterknife.BindView
 import cn.shycoder.wanandroidapp.view.BaseToolBarActivity
@@ -15,6 +16,7 @@ import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.presenter.HomePresenterImpl
 import cn.shycoder.wanandroidapp.presenter.contract.HomeContract
 import com.orhanobut.logger.Logger
+import kotlinx.android.synthetic.main.sub_knowledge_system_activity.*
 
 class MainActivity :
         BaseToolBarActivity<HomeContract.Presenter>(), HomeContract.View {
@@ -48,6 +50,12 @@ class MainActivity :
         this.actionBar.setHomeAsUpIndicator(R.drawable.main_nav_menu)
         mFragmentManager = this.supportFragmentManager
         doInitBottomNav()
+
+        nav.setNavigationItemSelectedListener {
+            this.presenter!!.disposeNavEvent(this@MainActivity, it.itemId)
+            dlParent.closeDrawer(Gravity.LEFT)
+            true
+        }
     }
 
     /**
