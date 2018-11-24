@@ -1,10 +1,15 @@
 package cn.shycoder.wanandroidapp.view.fragment
 
+import android.view.ViewGroup
+import cn.shycoder.wanandroidapp.GlideImageLoader
 import cn.shycoder.wanandroidapp.adapter.recyclerview.ArticleAdapter
 import cn.shycoder.wanandroidapp.model.entity.Article
+import cn.shycoder.wanandroidapp.model.entity.HomeBanner
 import cn.shycoder.wanandroidapp.presenter.ArticlePresenterImpl
 import cn.shycoder.wanandroidapp.presenter.contract.ArticleContract
 import com.orhanobut.logger.Logger
+import com.youth.banner.Banner
+import com.youth.banner.BannerConfig
 
 /**
  * 显示首页文章的碎片
@@ -19,6 +24,7 @@ class ArticleFragment
         super.doInit()
         Logger.i("Home Article Load")
         presenter?.loadMore()
+        presenter?.loadBanner()
     }
 
     override fun loadedData(list: List<Article>) {
@@ -39,7 +45,33 @@ class ArticleFragment
         recyclerView.refreshComplete()
     }
 
+    /**
+     * 加载Banners
+     * */
+    override fun loadedBanner(banners: List<HomeBanner>) {
+
+        Logger.i("Load banner")
+
+        val imgUrlList = banners.map { it.imagePath }
+        val titleList = banners.map { it.title }
+
+        val banner = Banner(this.context)
+        val layoutParams = ViewGroup.LayoutParams(-1, 500)
+        banner.layoutParams = layoutParams;
+
+        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
+        banner.setImageLoader(GlideImageLoader())
+        //设置显示标题的格式为 [标题+数字]
+        banner.setImages(imgUrlList)
+        banner.setBannerTitles(titleList)
+
+        this.addHeaderView(banner)
+        banner.start()
+    }
+
     override fun createPresenter(): ArticleContract.Presenter {
         return ArticlePresenterImpl().apply { view = this@ArticleFragment }
     }
+
+
 }

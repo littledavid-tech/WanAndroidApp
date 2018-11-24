@@ -70,4 +70,24 @@ class ArticlePresenterImpl
                             disposable = it
                         })
     }
+
+    /**
+     * 加载所有的banner
+     * */
+    override fun loadBanner() {
+        HomeArticleService
+                .instance
+                .getBanners()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        {
+                            val banners = it.data!!
+                            view!!.loadedBanner(banners)
+                        },
+                        {
+                            it.printStackTrace()
+                            Logger.e("Meet a error in RxJava")
+                        })
+    }
 }

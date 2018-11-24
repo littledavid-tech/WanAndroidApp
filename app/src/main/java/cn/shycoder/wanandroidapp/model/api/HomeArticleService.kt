@@ -1,6 +1,7 @@
 package cn.shycoder.wanandroidapp.model.api
 
 import cn.shycoder.wanandroidapp.model.entity.Article
+import cn.shycoder.wanandroidapp.model.entity.HomeBanner
 import cn.shycoder.wanandroidapp.model.entity.Paging
 import cn.shycoder.wanandroidapp.model.entity.SuperEntity
 import cn.shycoder.wanandroidapp.utils.RetrofitUtils
@@ -16,6 +17,12 @@ interface HomeArticleService {
      * */
     @GET("/article/list/{page}/json")
     fun getArticles(@Path("page") pageIndex: Int): io.reactivex.Observable<SuperEntity<Paging<Article>>>
+
+    /**
+     * 获取首页的Banner
+     * */
+    @GET("/banner/json")
+    fun getBanners(): io.reactivex.Observable<SuperEntity<List<HomeBanner>>>
 
     companion object {
         /**
