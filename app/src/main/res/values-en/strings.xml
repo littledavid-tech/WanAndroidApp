@@ -25,4 +25,6 @@
     <string name="article_detail_option_menu_share">Share</string>
     <string name="article_detail_option_menu_open_in_system_browser">Open In System Browser</string>
     <string name="article_detail_option_menu_collect">Collect</string>
+    <string name="article_detail_title">Article Detail</string>
+    <string name="article_detail_msg_share_function_will_be_added_soon">Share function will be added soon</string>
 </resources>

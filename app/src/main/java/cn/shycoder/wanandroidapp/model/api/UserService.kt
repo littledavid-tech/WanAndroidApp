@@ -20,10 +20,10 @@ interface UserService {
     /**
      * 收藏站内文章的API列表
      * */
-    @Headers(NetConst.SET_COOKIE)
-    @FormUrlEncoded
-    @POST("/collect/{articleId}/json")
-    fun collectInternalArticle(@Path("articleId") articleId: Int): Observable<SuperEntity<Any?>>
+    @Headers(NetConst.SET_COOKIE + ":xxx")
+//    @FormUrlEncoded
+    @POST("/lg/collect/{articleId}/json")
+    fun collectInternalArticle(@Path("articleId") articleId: Int): Observable<SuperEntity<Any>>
 
     /**
      * 收藏站外文章
@@ -31,12 +31,12 @@ interface UserService {
      * @param author 作者
      * @param link 文章链接
      * */
-    @Headers(NetConst.SET_COOKIE)
+    @Headers(NetConst.SET_COOKIE + ":xxx")
     @FormUrlEncoded
     @POST("/lg/collect/add/json")
     fun collectExternalArticle(@Field("title") title: String,
                                @Field("author") author: String,
-                               @Field("link") link: String): Observable<SuperEntity<Any?>>
+                               @Field("link") link: String): Observable<SuperEntity<Any>>
 
 
     companion object {

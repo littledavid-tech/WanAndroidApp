@@ -3,6 +3,7 @@ package cn.shycoder.wanandroidapp.model.entity
 import android.nfc.Tag
 import android.os.Parcel
 import android.os.Parcelable
+import java.io.Serializable
 
 /**
  * Created by ITSoftware on 11/7/2018.
@@ -34,55 +35,41 @@ class Article() : Parcelable {
     var zan: Int = 0
 
     constructor(parcel: Parcel) : this() {
-        apkLink = parcel.readString()
-        author = parcel.readString()
-        chapterId = parcel.readInt()
-        chapterName = parcel.readString()
-        isCollect = parcel.readByte() != 0.toByte()
-        courseId = parcel.readInt()
-        desc = parcel.readString()
-        envelopePic = parcel.readString()
-        isFresh = parcel.readByte() != 0.toByte()
         id = parcel.readInt()
+        author = parcel.readString()
         link = parcel.readString()
-        niceDate = parcel.readString()
-        origin = parcel.readString()
-        projectLink = parcel.readString()
-        publishTime = parcel.readLong()
-        superChapterId = parcel.readInt()
-        superChapterName = parcel.readString()
-        tags = parcel.createTypedArrayList(Tag.CREATOR)
         title = parcel.readString()
-        type = parcel.readInt()
-        userId = parcel.readInt()
-        visible = parcel.readInt()
-        zan = parcel.readInt()
     }
 
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(apkLink)
-        parcel.writeString(author)
-        parcel.writeInt(chapterId)
-        parcel.writeString(chapterName)
-        parcel.writeByte(if (isCollect) 1 else 0)
-        parcel.writeInt(courseId)
-        parcel.writeString(desc)
-        parcel.writeString(envelopePic)
-        parcel.writeByte(if (isFresh) 1 else 0)
         parcel.writeInt(id)
+        parcel.writeString(author)
         parcel.writeString(link)
-        parcel.writeString(niceDate)
-        parcel.writeString(origin)
-        parcel.writeString(projectLink)
-        parcel.writeLong(publishTime)
-        parcel.writeInt(superChapterId)
-        parcel.writeString(superChapterName)
-        parcel.writeTypedList(tags)
         parcel.writeString(title)
-        parcel.writeInt(type)
-        parcel.writeInt(userId)
-        parcel.writeInt(visible)
-        parcel.writeInt(zan)
+
+//        parcel.writeString(author)
+//        parcel.writeInt(chapterId)
+//        parcel.writeString(chapterName)
+//        parcel.writeByte(if (isCollect) 1 else 0)
+//        parcel.writeInt(courseId)
+//        parcel.writeString(desc)
+//        parcel.writeString(envelopePic)
+//        parcel.writeByte(if (isFresh) 1 else 0)
+//        parcel.writeInt(id)
+//        parcel.writeString(link)
+//        parcel.writeString(niceDate)
+//        parcel.writeString(origin)
+//        parcel.writeString(projectLink)
+//        parcel.writeLong(publishTime)
+//        parcel.writeInt(superChapterId)
+//        parcel.writeString(superChapterName)
+//        parcel.writeTypedList(tags)
+//        parcel.writeString(title)
+//        parcel.writeInt(type)
+//        parcel.writeInt(userId)
+//        parcel.writeInt(visible)
+//        parcel.writeInt(zan)
     }
 
     override fun describeContents(): Int {

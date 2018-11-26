@@ -25,4 +25,6 @@
     <string name="article_detail_option_menu_share">分享</string>
     <string name="article_detail_option_menu_open_in_system_browser">系统浏览器打开</string>
     <string name="article_detail_option_menu_collect">收藏</string>
+    <string name="article_detail_title">文章详情</string>
+    <string name="article_detail_msg_share_function_will_be_added_soon">分享功能将会很快添加</string>
 </resources>

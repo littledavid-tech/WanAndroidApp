@@ -14,8 +14,6 @@ interface ArticleDetailContract {
         fun collectedArticle(isCollected: Boolean)
 
         fun openArticle(url: String)
-
-        fun setToolbarTitle(title: String)
     }
 
     interface Presenter : BaseContract.Presenter<View> {
@@ -23,6 +21,11 @@ interface ArticleDetailContract {
          * 收藏文章
          * */
         fun collectArticle(article: Article)
+
+        /**
+         * 取消收藏文章
+         * */
+        fun cancelCollectArticle(article: Article)
 
         /**
          * 分享文章
