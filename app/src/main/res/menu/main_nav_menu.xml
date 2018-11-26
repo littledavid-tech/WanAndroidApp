@@ -5,7 +5,8 @@
             <item
                 android:id="@+id/main_menu_my_collect"
                 android:icon="@drawable/main_nav_men_collect"
-                android:title="@string/main_nav_menu_my_collect" />
+                android:title="@string/main_nav_menu_my_collect"
+                android:visible="false" />
             <item
                 android:id="@+id/main_menu_my_login"
                 android:icon="@drawable/main_nav_menu_login"

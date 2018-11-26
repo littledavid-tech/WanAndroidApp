@@ -3,13 +3,18 @@ package cn.shycoder.wanandroidapp.presenter
 import android.content.Context
 import android.support.v4.app.Fragment
 import cn.shycoder.wanandroidapp.R
+import cn.shycoder.wanandroidapp.SPKeyConst
+import cn.shycoder.wanandroidapp.model.api.UserService
 import cn.shycoder.wanandroidapp.presenter.contract.HomeContract
-import cn.shycoder.wanandroidapp.presenter.contract.LoginContract
+import cn.shycoder.wanandroidapp.utils.MyApplication
 import cn.shycoder.wanandroidapp.view.activity.LoginActivity
 import cn.shycoder.wanandroidapp.view.fragment.ArticleFragment
 import cn.shycoder.wanandroidapp.view.fragment.KnowledgeSystemFragment
 import cn.shycoder.wanandroidapp.view.fragment.ProjectFragment
+import com.orhanobut.logger.Logger
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 
 
 class HomePresenterImpl
@@ -57,9 +62,30 @@ class HomePresenterImpl
         }
     }
 
+    override fun autoLogin() {
+        Logger.i("Auto login")
+        val username = MyApplication.getStringFromSP(SPKeyConst.sp_key_username)
+        val pwd = MyApplication.getStringFromSP(SPKeyConst.sp_key_password)
+        if (username.isEmpty() || pwd.isEmpty()) {
+            MyApplication.currentUser = null
+            return
+        }
+        UserService
+                .instance
+                .login(username, pwd)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    MyApplication.currentUser = if (it.errorCode == 0) it.data else null
+                    view?.reloadNavigationMenu()
+                }, {
+                    it.printStackTrace()
+                })
+    }
+
     override fun onDestroy() {
-        super.onDestroy()
         mFragmentMap.clear()
+        super.onDestroy()
     }
 
 

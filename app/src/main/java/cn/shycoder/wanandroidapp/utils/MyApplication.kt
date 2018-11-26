@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.view.Display
 import android.widget.Toast
+import cn.shycoder.wanandroidapp.model.entity.UserInfo
 import com.orhanobut.logger.AndroidLogAdapter
 
 /**
@@ -56,5 +57,10 @@ class MyApplication : Application() {
             val sp = context.getSharedPreferences(appSPName, Context.MODE_PRIVATE)
             sp.edit().putString(key, value).apply()
         }
+
+        /**
+         * 当前登录到系统中的用户
+         * */
+        var currentUser: UserInfo? = null
     }
 }

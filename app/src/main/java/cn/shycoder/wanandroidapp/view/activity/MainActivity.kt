@@ -8,22 +8,24 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.widget.DrawerLayout
 import android.view.Gravity
-import android.view.MenuItem
+import android.widget.TextView
 import butterknife.BindString
 import butterknife.BindView
 import cn.shycoder.wanandroidapp.view.BaseToolBarActivity
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.presenter.HomePresenterImpl
 import cn.shycoder.wanandroidapp.presenter.contract.HomeContract
+import cn.shycoder.wanandroidapp.utils.MyApplication
 import com.orhanobut.logger.Logger
-import kotlinx.android.synthetic.main.sub_knowledge_system_activity.*
 
 class MainActivity :
         BaseToolBarActivity<HomeContract.Presenter>(), HomeContract.View {
 
-
     @BindString(R.string.app_name)
     lateinit var appName: String
+
+    @BindString(R.string.main_nav_head_tourist)
+    lateinit var tourist: String
 
     @BindView(R.id.main_dl_parent)
     lateinit var dlParent: DrawerLayout
@@ -33,6 +35,8 @@ class MainActivity :
 
     @BindView(R.id.main_bottom_nav)
     lateinit var bottomNav: BottomNavigationView
+
+    lateinit var tvUsername: TextView
 
     private lateinit var mFragmentManager: FragmentManager
 
@@ -51,10 +55,33 @@ class MainActivity :
         mFragmentManager = this.supportFragmentManager
         doInitBottomNav()
 
+        tvUsername = nav.getHeaderView(0).findViewById(R.id.main_nav_head_user_name)
+
+        this.presenter?.autoLogin()
+
         nav.setNavigationItemSelectedListener {
             this.presenter!!.disposeNavEvent(this@MainActivity, it.itemId)
             dlParent.closeDrawer(Gravity.LEFT)
             true
+        }
+    }
+
+    override fun onPostResume() {
+        super.onPostResume()
+        reloadNavigationMenu()
+    }
+
+    override fun reloadNavigationMenu() {
+        val myCollectMenu = nav.menu.findItem(R.id.main_menu_my_collect)
+        val loginMenu = nav.menu.findItem(R.id.main_menu_my_login)
+        if (null != MyApplication.currentUser) {
+            myCollectMenu.isVisible = true
+            loginMenu.isVisible = false
+            tvUsername.text = MyApplication.currentUser?.username
+        } else {
+            myCollectMenu.isVisible = false
+            loginMenu.isVisible = true
+            tvUsername.text = tourist
         }
     }
 

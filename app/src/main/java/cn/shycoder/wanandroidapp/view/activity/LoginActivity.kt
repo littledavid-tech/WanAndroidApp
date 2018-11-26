@@ -10,12 +10,11 @@ import cn.shycoder.wanandroidapp.model.entity.UserInfo
 import cn.shycoder.wanandroidapp.presenter.LoginPresenterImpl
 import cn.shycoder.wanandroidapp.presenter.contract.BaseContract
 import cn.shycoder.wanandroidapp.presenter.contract.LoginContract
+import cn.shycoder.wanandroidapp.utils.MyApplication
 import cn.shycoder.wanandroidapp.utils.ToastUtils
 import cn.shycoder.wanandroidapp.view.BaseToolBarActivity
 
-/**
- * Created by ShyCoder on 11/24/2018.
- */
+
 class LoginActivity : BaseToolBarActivity<LoginPresenterImpl>(), LoginContract.View {
 
     @BindView(R.id.login_etUsername)
@@ -44,10 +43,15 @@ class LoginActivity : BaseToolBarActivity<LoginPresenterImpl>(), LoginContract.V
 
     override fun loginSuccessful(userInfo: UserInfo) {
         ToastUtils.show(R.string.login_msg_login_successfully)
+        MyApplication.currentUser = userInfo
+        this.finish()
     }
 
     override fun loginFailed() {
         ToastUtils.show(R.string.login_msg_login_failed)
+        this.etPassword.setText("")
+        this.etUsername.setText("")
+        MyApplication.currentUser = null
     }
 
     override fun cannotBeNull() {

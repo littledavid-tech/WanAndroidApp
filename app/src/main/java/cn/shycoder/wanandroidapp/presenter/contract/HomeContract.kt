@@ -11,6 +11,11 @@ interface HomeContract {
          * 将Fragment显示出来
          * */
         fun showFragment(fragment: Fragment)
+
+        /**
+         * 重新加载侧边导航的menu的状态
+         * */
+        fun reloadNavigationMenu()
     }
 
     interface Presenter : BaseContract.Presenter<View> {
@@ -25,6 +30,8 @@ interface HomeContract {
          * 处理NavigationView的点击事件
          * */
         fun disposeNavEvent(context: Context, menuId: Int)
+
+        fun autoLogin()
 
         override fun onDestroy() {
             view = null
