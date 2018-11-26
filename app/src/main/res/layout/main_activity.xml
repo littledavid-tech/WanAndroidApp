@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/main_bottom_nav_bg"
-            app:menu="@menu/main_bottom_nav" />
+            app:menu="@menu/main_bottom_nav_menu" />
     </LinearLayout>
 
     <include layout="@layout/main_nav" />

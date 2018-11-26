@@ -22,4 +22,7 @@
     <string name="login_msg_login_failed">Failed to login</string>
     <string name="login_msg_login_successfully">Login successfully</string>
     <string name="login_msg_null_username_or_password">Username or password cannot be null!</string>
+    <string name="article_detail_option_menu_share">Share</string>
+    <string name="article_detail_option_menu_open_in_system_browser">Open In System Browser</string>
+    <string name="article_detail_option_menu_collect">Collect</string>
 </resources>

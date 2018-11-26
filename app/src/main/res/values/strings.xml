@@ -22,4 +22,7 @@
     <string name="login_msg_login_failed">登录失败</string>
     <string name="login_msg_login_successfully">登录成功</string>
     <string name="login_msg_null_username_or_password">用户名或密码不能为空</string>
+    <string name="article_detail_option_menu_share">分享</string>
+    <string name="article_detail_option_menu_open_in_system_browser">系统浏览器打开</string>
+    <string name="article_detail_option_menu_collect">收藏</string>
 </resources>

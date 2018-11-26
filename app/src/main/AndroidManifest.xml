@@ -30,6 +30,8 @@
         <activity android:name=".view.activity.BaseRecyclerViewActivity" />
         <activity android:name=".view.activity.ProjectListActivity" />
         <activity android:name=".view.activity.LoginActivity" />
+        <activity android:name=".view.activity.ArticleDetailActivity" />
+
     </application>
 
 </manifest>
