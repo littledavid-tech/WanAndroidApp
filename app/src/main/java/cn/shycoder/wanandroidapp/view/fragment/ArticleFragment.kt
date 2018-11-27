@@ -1,15 +1,19 @@
 package cn.shycoder.wanandroidapp.view.fragment
 
+import android.view.View
 import android.view.ViewGroup
-import cn.shycoder.wanandroidapp.GlideImageLoader
+import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.adapter.recyclerview.ArticleAdapter
 import cn.shycoder.wanandroidapp.model.entity.Article
 import cn.shycoder.wanandroidapp.model.entity.HomeBanner
 import cn.shycoder.wanandroidapp.presenter.ArticlePresenterImpl
 import cn.shycoder.wanandroidapp.presenter.contract.ArticleContract
+import cn.shycoder.wanandroidapp.utils.CommonUtils
+import cn.shycoder.wanandroidapp.view.NetworkImageHolderView
+import com.bigkoo.convenientbanner.ConvenientBanner
+import com.bigkoo.convenientbanner.holder.CBViewHolderCreator
+import com.bigkoo.convenientbanner.holder.Holder
 import com.orhanobut.logger.Logger
-import com.youth.banner.Banner
-import com.youth.banner.BannerConfig
 
 /**
  * 显示首页文章的碎片
@@ -49,25 +53,26 @@ class ArticleFragment
      * 加载Banners
      * */
     override fun loadedBanner(banners: List<HomeBanner>) {
-        //TODO Banner的指示器没有正常的加载出来
-        val imgUrlList = banners.map { it.imagePath }
-        val titleList = banners.map { it.title }
-
-        val banner = Banner(this.context)
+        //初始化ConvenientBanner
+        val banner = ConvenientBanner<HomeBanner>(this.context)
         val layoutParams = ViewGroup.LayoutParams(-1, 500)
-        banner.layoutParams = layoutParams;
-        //设置显示标题的格式为 [标题+数字]
-        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
-        banner.setImageLoader(GlideImageLoader())
-        banner.setImages(imgUrlList)
-        banner.setBannerTitles(titleList)
-        //为Banner 注册点击事件
-        banner.setOnBannerListener { position ->
-            val homeBanner = banners[position]
-            this.presenter?.disposeBannerClickEvent(homeBanner)
-        }
+        banner.layoutParams = layoutParams
+        banner.setPages(object : CBViewHolderCreator {
+            override fun createHolder(itemView: View?): Holder<*> {
+                return NetworkImageHolderView(itemView)
+            }
+            override fun getLayoutId(): Int {
+                return R.layout.banner_image_view
+            }
+        }, banners).setOnItemClickListener { position ->
+            CommonUtils.openWebSiteInBrowser(context, banners[position].url)
+        }.setPageIndicator(intArrayOf(
+                R.drawable.banner_page_indicator_unselected_shape,
+                R.drawable.banner_page_indicator_selected_shape))
+
         this.addHeaderView(banner)
-        banner.start()
+
+        banner.startTurning(2000)
     }
 
     override fun createPresenter(): ArticleContract.Presenter {

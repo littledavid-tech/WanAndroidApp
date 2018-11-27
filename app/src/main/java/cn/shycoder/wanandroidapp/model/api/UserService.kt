@@ -1,6 +1,8 @@
 package cn.shycoder.wanandroidapp.model.api
 
 import cn.shycoder.wanandroidapp.model.NetConst
+import cn.shycoder.wanandroidapp.model.entity.Article
+import cn.shycoder.wanandroidapp.model.entity.Paging
 import cn.shycoder.wanandroidapp.model.entity.SuperEntity
 import cn.shycoder.wanandroidapp.model.entity.User
 import cn.shycoder.wanandroidapp.utils.RetrofitUtils
@@ -16,6 +18,13 @@ interface UserService {
     @POST("/user/login")
     fun login(@Field("username") username: String,
               @Field("password") password: String): Observable<SuperEntity<User>>
+
+    /**
+     * 获取收藏文章的列表
+     * */
+    @Headers(NetConst.SET_COOKIE + ":xx")
+    @GET("/lg/collect/list/{page}/json")
+    fun collectedArticleList(): Observable<SuperEntity<Paging<Article>>>
 
     /**
      * 收藏站内文章的API列表
