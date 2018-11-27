@@ -38,6 +38,13 @@ interface UserService {
                                @Field("author") author: String,
                                @Field("link") link: String): Observable<SuperEntity<Any>>
 
+    /**
+     * 取消收藏
+     * @param articleId
+     * */
+    @Headers(NetConst.SET_COOKIE + ":xx")
+    @POST("/lg/uncollect_originId/{articleId}/json")
+    fun cancelCollect(@Path("articleId") articleId: Int): Observable<SuperEntity<Any>>
 
     companion object {
         val instance = RetrofitUtils.create<UserService>()

@@ -17,8 +17,9 @@ class RequestInterceptor : Interceptor {
         if (null != chain.request().headers().get(NetConst.SET_COOKIE)) {
             builder.removeHeader(NetConst.SET_COOKIE)
             val cookie = MyApplication.getStringFromSP(SPKeyConst.sp_key_cookie)
-            Logger.e("Send cookie: Cookie=$cookie")
-            builder.addHeader("Cookie", cookie)
+            if (cookie.isNotEmpty()) {
+                builder.addHeader("Cookie", cookie)
+            }
         }
         return chain.proceed(builder.build())
     }

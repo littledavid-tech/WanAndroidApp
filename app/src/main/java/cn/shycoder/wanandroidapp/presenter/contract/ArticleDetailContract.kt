@@ -14,6 +14,11 @@ interface ArticleDetailContract {
         fun collectedArticle(isCollected: Boolean)
 
         fun openArticle(url: String)
+
+        /**
+         * 在收藏文章之前，提示用户登录
+         * */
+        fun pleaseLogin()
     }
 
     interface Presenter : BaseContract.Presenter<View> {

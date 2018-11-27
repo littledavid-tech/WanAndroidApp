@@ -1,11 +1,14 @@
 package cn.shycoder.wanandroidapp.model.api
 
+import cn.shycoder.wanandroidapp.model.NetConst
 import cn.shycoder.wanandroidapp.model.entity.Article
 import cn.shycoder.wanandroidapp.model.entity.HomeBanner
 import cn.shycoder.wanandroidapp.model.entity.Paging
 import cn.shycoder.wanandroidapp.model.entity.SuperEntity
 import cn.shycoder.wanandroidapp.utils.RetrofitUtils
 import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.Headers
 import retrofit2.http.Path
 
 /**

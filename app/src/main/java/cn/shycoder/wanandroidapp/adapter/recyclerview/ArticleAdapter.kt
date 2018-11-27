@@ -14,8 +14,6 @@ import cn.shycoder.wanandroidapp.model.entity.Article
 import cn.shycoder.wanandroidapp.utils.MyApplication
 import cn.shycoder.wanandroidapp.view.activity.ArticleDetailActivity
 import com.bumptech.glide.Glide
-import com.bumptech.glide.Glide.init
-
 
 /**
  * 首页文章的适配器
@@ -40,7 +38,12 @@ class ArticleAdapter(context: Context, list: MutableList<Article>)
         holder.tvKnowledgeSystem.tag = "${item.superChapterId}/${item.superChapterId}"
 
         //根据是否收藏，设置不同的 Drawable
-        if (item.isCollect) {
+        val isCollect = null != MyApplication.currentUser &&
+                null != MyApplication.currentUser!!.collectIds &&
+                MyApplication.currentUser!!.collectIds!!.contains(item.id)
+
+        if (item.isCollect || isCollect) {
+            item.isCollect = true
             Glide.with(MyApplication.context).load(R.drawable.app_like).into(holder.ivLike)
         } else {
             Glide.with(MyApplication.context).load(R.drawable.app_unlike).into(holder.ivLike)

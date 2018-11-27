@@ -6,14 +6,12 @@ import android.net.Uri
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.model.api.UserService
 import cn.shycoder.wanandroidapp.model.entity.Article
-import cn.shycoder.wanandroidapp.model.entity.SuperEntity
 import cn.shycoder.wanandroidapp.presenter.contract.ArticleDetailContract
 import cn.shycoder.wanandroidapp.utils.CommonUtils
+import cn.shycoder.wanandroidapp.utils.MyApplication
 import cn.shycoder.wanandroidapp.utils.ToastUtils
 import cn.shycoder.wanandroidapp.view.activity.ArticleDetailActivity
 import com.orhanobut.logger.Logger
-import io.reactivex.Observable
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -23,25 +21,16 @@ import io.reactivex.schedulers.Schedulers
  */
 class ArticleDetailPresenterImpl(private val context: Context) : ArticleDetailContract.Presenter {
 
-    private val mDomainName: String = "wanandroid.com"
-
     override var view: ArticleDetailContract.View? = null
     override var disposable: Disposable? = null
-
     private var mArticle: Article? = null
 
     override fun collectArticle(article: Article) {
-        //如果包含指定的域名则确定是站内文章
-        //否则则是站外文章
-//        val observable: Observable<SuperEntity<Any>> = if (article.link!!.contains(mDomainName)) {
-//            UserService
-//                    .instance
-//                    .collectInternalArticle(article.id)
-//        } else {
-//            UserService
-//                    .instance
-//                    .collectExternalArticle(article.title!!, article.author!!, article.link!!)
-//        }
+        if (null == MyApplication.currentUser) {
+            view?.pleaseLogin()
+            return
+        }
+
         UserService
                 .instance
                 .collectInternalArticle(article.id)
@@ -52,6 +41,9 @@ class ArticleDetailPresenterImpl(private val context: Context) : ArticleDetailCo
                         Logger.i("Collect article")
                         view?.collectedArticle(true)
                         this.mArticle!!.isCollect = true
+                        if (!MyApplication.currentUser?.collectIds!!.contains(mArticle!!.id)) {
+                            MyApplication.currentUser?.collectIds!!.add(mArticle!!.id)
+                        }
                     } else {
                         Logger.e(it.errorMsg)
                     }
@@ -62,7 +54,22 @@ class ArticleDetailPresenterImpl(private val context: Context) : ArticleDetailCo
     }
 
     override fun cancelCollectArticle(article: Article) {
-
+        UserService
+                .instance
+                .cancelCollect(article.id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    if (it.errorCode == 0) {
+                        view?.collectedArticle(false)
+                        this.mArticle!!.isCollect = false
+                        MyApplication.currentUser!!.collectIds!!.remove(mArticle!!.id)
+                    } else {
+                        Logger.e(it.errorMsg)
+                    }
+                }, {
+                    it.printStackTrace()
+                })
     }
 
     override fun shareArticle(article: Article) {
@@ -70,11 +77,7 @@ class ArticleDetailPresenterImpl(private val context: Context) : ArticleDetailCo
     }
 
     override fun openArticleInSystemBrowser(article: Article) {
-        val uri = Uri.parse(this.mArticle!!.link)
-        val intent = Intent(Intent.ACTION_VIEW, uri)
-        if (CommonUtils.isActivityExisted(this.context, intent)) {
-            context.startActivity(intent)
-        } else {
+        if (!CommonUtils.openWebSiteInBrowser(context, article.link!!)) {
             Logger.e("Cannot find the system browser!")
         }
     }
@@ -101,8 +104,6 @@ class ArticleDetailPresenterImpl(private val context: Context) : ArticleDetailCo
     }
 
     override fun loadArticle(intent: Intent) {
-//        this.mArticle =
-//                intent.getParcelableExtra(ArticleDetailActivity.INTENT_EXTRA_ARTICLE) as Article
         this.mArticle =
                 intent.getParcelableExtra(ArticleDetailActivity.INTENT_EXTRA_ARTICLE) as Article
         Logger.i("ArticleId:${mArticle!!.id}")

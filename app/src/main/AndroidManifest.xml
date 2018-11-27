@@ -4,11 +4,12 @@
 
     <!-- 网络相关的权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--访问网络的状态-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".utils.MyApplication"
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"

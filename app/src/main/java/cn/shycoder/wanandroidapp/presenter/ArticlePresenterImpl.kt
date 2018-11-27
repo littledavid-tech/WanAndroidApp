@@ -1,17 +1,20 @@
 package cn.shycoder.wanandroidapp.presenter
 
+import android.content.Context
 import cn.shycoder.wanandroidapp.model.api.HomeArticleService
 import cn.shycoder.wanandroidapp.model.entity.Article
+import cn.shycoder.wanandroidapp.model.entity.HomeBanner
 import cn.shycoder.wanandroidapp.model.entity.Paging
 import cn.shycoder.wanandroidapp.model.entity.SuperEntity
 import cn.shycoder.wanandroidapp.presenter.contract.ArticleContract
+import cn.shycoder.wanandroidapp.utils.CommonUtils
 import com.orhanobut.logger.Logger
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class ArticlePresenterImpl
+class ArticlePresenterImpl(private val context: Context)
     : ArticleContract.Presenter {
 
     override var view: ArticleContract.View? = null
@@ -89,5 +92,11 @@ class ArticlePresenterImpl
                             it.printStackTrace()
                             Logger.e("Meet a error in RxJava")
                         })
+    }
+
+    override fun disposeBannerClickEvent(banner: HomeBanner) {
+        if (!CommonUtils.openWebSiteInBrowser(context, banner.url)) {
+            Logger.e("Not find system browser!")
+        }
     }
 }

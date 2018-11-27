@@ -12,6 +12,7 @@ import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.model.entity.Article
 import cn.shycoder.wanandroidapp.presenter.ArticleDetailPresenterImpl
 import cn.shycoder.wanandroidapp.presenter.contract.ArticleDetailContract
+import cn.shycoder.wanandroidapp.utils.ToastUtils
 import cn.shycoder.wanandroidapp.view.BaseToolBarActivity
 import com.orhanobut.logger.Logger
 
@@ -64,6 +65,10 @@ class ArticleDetailActivity
         return true
     }
 
+    override fun pleaseLogin() {
+        ToastUtils.show(R.string.app_msg_please_login)
+    }
+
     override fun collectedArticle(isCollected: Boolean) {
         Logger.d("设置ICON")
         this.mIsCollected = isCollected
@@ -94,6 +99,7 @@ class ArticleDetailActivity
 //            intent.putExtra(INTENT_EXTRA_ARTICLE, article)
             context.startActivity(intent)
         }
+
     }
 
 

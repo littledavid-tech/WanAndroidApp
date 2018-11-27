@@ -22,5 +22,10 @@ interface ArticleContract {
          * 加载首页的 Banner
          * */
         fun loadBanner()
+
+        /**
+         * 处理banner的点击事件
+         * */
+        fun disposeBannerClickEvent(banner: HomeBanner)
     }
 }

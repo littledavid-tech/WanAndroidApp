@@ -39,14 +39,15 @@ class Article() : Parcelable {
         author = parcel.readString()
         link = parcel.readString()
         title = parcel.readString()
+        isCollect = parcel.readByte() == 1.toByte()
     }
-
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
         parcel.writeString(author)
         parcel.writeString(link)
         parcel.writeString(title)
+        parcel.writeByte(if (isCollect) 1 else 0)
 
 //        parcel.writeString(author)
 //        parcel.writeInt(chapterId)

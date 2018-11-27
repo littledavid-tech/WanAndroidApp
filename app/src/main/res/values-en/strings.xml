@@ -27,4 +27,5 @@
     <string name="article_detail_option_menu_collect">Collect</string>
     <string name="article_detail_title">Article Detail</string>
     <string name="article_detail_msg_share_function_will_be_added_soon">Share function will be added soon</string>
+    <string name="app_msg_please_login">Please login</string>
 </resources>

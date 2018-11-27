@@ -58,6 +58,12 @@ class MyApplication : Application() {
             sp.edit().putString(key, value).apply()
         }
 
+        fun removeSPByKey(key: String) {
+            val sp = context.getSharedPreferences(appSPName, Context.MODE_PRIVATE)
+            sp.edit().remove(key).apply()
+        }
+
+        //TODO 一个不得已的办法，通过静态变量来存储用户信息
         /**
          * 当前登录到系统中的用户
          * */

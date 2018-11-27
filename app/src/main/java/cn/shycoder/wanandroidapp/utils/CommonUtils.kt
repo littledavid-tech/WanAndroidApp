@@ -3,6 +3,7 @@ package cn.shycoder.wanandroidapp.utils
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 
 /**
  * Created by ShyCoder on 11/26/2018.
@@ -17,5 +18,19 @@ object CommonUtils {
     fun isActivityExisted(context: Context, intent: Intent): Boolean {
         return context.packageManager.queryIntentActivities(intent
                 , PackageManager.MATCH_DEFAULT_ONLY).isNotEmpty()
+    }
+
+    /**
+     * 使用系统浏览器打开网页
+     * @param url 需要打开的超链接
+     * @return 如果没有浏览器则返回false
+     * */
+    fun openWebSiteInBrowser(context: Context, url: String): Boolean {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        if (isActivityExisted(context, intent)) {
+            context.startActivity(intent)
+            return true
+        }
+        return false
     }
 }

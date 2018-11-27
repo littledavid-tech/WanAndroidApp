@@ -49,9 +49,7 @@ class ArticleFragment
      * 加载Banners
      * */
     override fun loadedBanner(banners: List<HomeBanner>) {
-
-        Logger.i("Load banner")
-
+        //TODO Banner的指示器没有正常的加载出来
         val imgUrlList = banners.map { it.imagePath }
         val titleList = banners.map { it.title }
 
@@ -64,13 +62,17 @@ class ArticleFragment
         //设置显示标题的格式为 [标题+数字]
         banner.setImages(imgUrlList)
         banner.setBannerTitles(titleList)
-
+        //为Banner 注册点击事件
+        banner.setOnBannerListener { position ->
+            val homeBanner = banners[position]
+            this.presenter?.disposeBannerClickEvent(homeBanner)
+        }
         this.addHeaderView(banner)
         banner.start()
     }
 
     override fun createPresenter(): ArticleContract.Presenter {
-        return ArticlePresenterImpl().apply { view = this@ArticleFragment }
+        return ArticlePresenterImpl(this.context).apply { view = this@ArticleFragment }
     }
 
 

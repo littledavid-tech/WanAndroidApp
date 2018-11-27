@@ -1,7 +1,6 @@
 package cn.shycoder.wanandroidapp.presenter
 
 import cn.shycoder.wanandroidapp.model.api.KnowledgeSystemService
-import cn.shycoder.wanandroidapp.model.entity.KnowledgeNode
 import cn.shycoder.wanandroidapp.presenter.contract.KnowledgeSystemContract
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable

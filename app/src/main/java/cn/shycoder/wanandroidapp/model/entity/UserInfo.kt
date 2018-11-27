@@ -3,7 +3,7 @@ package cn.shycoder.wanandroidapp.model.entity
 
 class UserInfo {
     var chapterTops: List<String>? = null
-    var collectIds: List<Int>? = null
+    var collectIds: MutableList<Int>? = null
     var email: String = ""
     var icon: String = ""
     var id: Int = -1

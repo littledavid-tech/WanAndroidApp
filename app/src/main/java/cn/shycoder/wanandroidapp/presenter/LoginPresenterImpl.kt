@@ -9,9 +9,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-/**
- * Created by ShyCoder on 11/24/2018.
- */
 class LoginPresenterImpl : LoginContract.Presenter {
 
     override var view: LoginContract.View? = null
@@ -32,7 +29,6 @@ class LoginPresenterImpl : LoginContract.Presenter {
                         it.errorCode == 0 -> {//登录成功
                             view!!.loginSuccessful(it.data!!)
                             saveUsernameAndPwdIntoSP(username, password)
-                            Logger.i(it.toString())
                         }
                         it.errorCode == -1 -> {//登录失败
                             view!!.loginFailed()
@@ -48,14 +44,14 @@ class LoginPresenterImpl : LoginContract.Presenter {
                 }, {
                     this.disposable = it
                 })
-
     }
 
     /**
-     * 将用户名和密码持久化到SP中
+     * 本地持久化保存账号和密码
      * */
     private fun saveUsernameAndPwdIntoSP(username: String, pwd: String) {
         MyApplication.putStringToSP(SPKeyConst.sp_key_username, username)
         MyApplication.putStringToSP(SPKeyConst.sp_key_password, pwd)
     }
+
 }

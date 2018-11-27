@@ -57,7 +57,18 @@ class HomePresenterImpl
             R.id.main_menu_my_login -> {//登录按钮的点击事件
                 LoginActivity.show(context)
             }
+            R.id.main_menu_my_logout -> {//Logout
+                MyApplication.currentUser = null
+                //移除Cookie和用户账号密码信息
+                MyApplication.removeSPByKey(SPKeyConst.sp_key_cookie)
+                MyApplication.removeSPByKey(SPKeyConst.sp_key_username)
+                MyApplication.removeSPByKey(SPKeyConst.sp_key_password)
+            }
+            R.id.main_menu_my_collect -> {//我的收藏
+
+            }
             else -> {
+                Logger.e("Unknown option")
             }
         }
     }
