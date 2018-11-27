@@ -7,22 +7,31 @@ import okhttp3.Response
 import java.util.logging.Logger
 
 /**
- * Created by ShyCoder on 11/26/2018.
- */
+ * 用于截获响应的cookie的OKHttp的拦截器
+ * */
 class CookieInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain?): Response {
         val originResponse = chain!!.proceed(chain.request())
         //判断头部是否具有Cookie
         if (!originResponse.header("Set-Cookie").isNullOrBlank()) {
-            originResponse.networkResponse()
-            val cookie = originResponse.header("Set-Cookie")!!
+
+            //读取所有的cookie
+            val sb = StringBuffer()
             for (header in originResponse.headers("Set-Cookie")) {
-                
+                try {
+                    val cookie = header.split(";")[0]
+                    sb.append("$cookie;")
+                } catch (ex: Exception) {
+                    ex.printStackTrace()
+                }
             }
-            com.orhanobut.logger.Logger.i("Cooke:${cookie}")
-            if (cookie.contains("token_pass") and cookie.contains("loginUserName")) {
-                MyApplication.putStringToSP(SPKeyConst.sp_key_cookie, cookie)
-                com.orhanobut.logger.Logger.e("Save cookie")
+            //持久化Cookie
+            if (sb.isNotEmpty()) {
+                //判断是否是登录返回的cookie
+                if (sb.contains("token_pass")) {
+                    com.orhanobut.logger.Logger.e("Save Cookie:$sb")
+                    MyApplication.putStringToSP(SPKeyConst.sp_key_cookie, sb.toString())
+                }
             }
         }
         return originResponse

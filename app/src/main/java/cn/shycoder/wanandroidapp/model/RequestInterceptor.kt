@@ -6,9 +6,10 @@ import com.orhanobut.logger.Logger
 import okhttp3.Interceptor
 import okhttp3.Response
 
+
 /**
- * Created by ShyCoder on 11/26/2018.
- */
+ * 用于向OKHttp 请求头中填入Cookie 的拦截器
+ * */
 class RequestInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain?): Response {
         val builder = chain!!.request().newBuilder()
