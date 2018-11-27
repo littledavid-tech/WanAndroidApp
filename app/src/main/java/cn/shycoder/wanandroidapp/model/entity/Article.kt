@@ -27,7 +27,7 @@ class Article() : Parcelable {
     var publishTime: Long = 0
     var superChapterId: Int = 0
     var superChapterName: String? = null
-    var tags: List<Tag>? = null
+    var tags: List<cn.shycoder.wanandroidapp.model.entity.Tag>? = null
     var title: String? = null
     var type: Int = 0
     var userId: Int = 0

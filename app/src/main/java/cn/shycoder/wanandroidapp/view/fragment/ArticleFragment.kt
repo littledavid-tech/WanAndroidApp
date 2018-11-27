@@ -56,10 +56,9 @@ class ArticleFragment
         val banner = Banner(this.context)
         val layoutParams = ViewGroup.LayoutParams(-1, 500)
         banner.layoutParams = layoutParams;
-
+        //设置显示标题的格式为 [标题+数字]
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
         banner.setImageLoader(GlideImageLoader())
-        //设置显示标题的格式为 [标题+数字]
         banner.setImages(imgUrlList)
         banner.setBannerTitles(titleList)
         //为Banner 注册点击事件

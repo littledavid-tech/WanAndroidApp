@@ -36,6 +36,14 @@ class ArticleAdapter(context: Context, list: MutableList<Article>)
         holder.tvAuthor.text = item.author
         holder.tvKnowledgeSystem.text = "${item.superChapterName}/${item.chapterName}"
         holder.tvKnowledgeSystem.tag = "${item.superChapterId}/${item.superChapterId}"
+        holder.tvTime.text = item.niceDate
+
+        holder.tvTag.visibility = View.VISIBLE
+        if (item.tags?.isNotEmpty()!!) {
+            holder.tvTag.text = item.tags!![0].name
+        } else {
+            holder.tvTag.visibility = View.GONE
+        }
 
         //根据是否收藏，设置不同的 Drawable
         val isCollect = null != MyApplication.currentUser &&
@@ -54,6 +62,9 @@ class ArticleAdapter(context: Context, list: MutableList<Article>)
 
         @BindView(R.id.home_article_item_tvTag)
         lateinit var tvTag: TextView
+
+        @BindView(R.id.home_article_item_tvTime)
+        lateinit var tvTime: TextView
 
         @BindView(R.id.home_article_item_tvTitle)
         lateinit var tvTitle: TextView
