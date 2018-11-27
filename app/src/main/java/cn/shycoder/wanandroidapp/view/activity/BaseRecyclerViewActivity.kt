@@ -40,7 +40,7 @@ abstract class BaseRecyclerViewActivity<T : BaseRecyclerViewContract.Presenter<*
      * 是否启用加载更多
      * */
     override fun enableLoadMore(boolean: Boolean) {
-        this.presenter!!.loadMore()
+        this.recyclerView.setLoadingMoreEnabled(boolean)
     }
 
     /**

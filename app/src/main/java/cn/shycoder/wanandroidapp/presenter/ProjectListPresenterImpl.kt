@@ -7,10 +7,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-/**
- * Created by ShyCoder on 11/15/2018.
- */
+
 class ProjectListPresenterImpl(val cid: Int) : ProjectListContract.Presenter {
+
     override var view: ProjectListContract.View? = null
     override var disposable: Disposable? = null
 

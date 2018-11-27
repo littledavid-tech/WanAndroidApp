@@ -2,7 +2,7 @@ package cn.shycoder.wanandroidapp.model.api
 
 import cn.shycoder.wanandroidapp.model.NetConst
 import cn.shycoder.wanandroidapp.model.entity.SuperEntity
-import cn.shycoder.wanandroidapp.model.entity.UserInfo
+import cn.shycoder.wanandroidapp.model.entity.User
 import cn.shycoder.wanandroidapp.utils.RetrofitUtils
 import io.reactivex.Observable
 import retrofit2.http.*
@@ -15,7 +15,7 @@ interface UserService {
     @FormUrlEncoded
     @POST("/user/login")
     fun login(@Field("username") username: String,
-              @Field("password") password: String): Observable<SuperEntity<UserInfo>>
+              @Field("password") password: String): Observable<SuperEntity<User>>
 
     /**
      * 收藏站内文章的API列表

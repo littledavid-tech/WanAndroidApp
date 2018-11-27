@@ -12,7 +12,9 @@ import butterknife.ButterKnife
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.model.entity.Article
 import cn.shycoder.wanandroidapp.utils.MyApplication
+import cn.shycoder.wanandroidapp.view.activity.ArticleDetailActivity
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Glide.init
 
 /**
  * Created by ShyCoder on 11/15/2018.
@@ -26,21 +28,33 @@ class ProjectAdapter(context: Context, list: MutableList<Article>)
                         R.layout.recycler_view_grid_item_project
                         , parent
                         , false)
-        return ViewHolder(view)
+        return ViewHolder(context, view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         val item = list[position]
-        holder!!.tvAuthor.text = item.author
+        holder!!.article = item
+
+        holder.tvAuthor.text = item.author
         holder.tvTime.text = item.niceDate
         holder.tvTitle.text = item.title
 
         Glide.with(MyApplication.context)
                 .load(item.envelopePic)
                 .into(holder.ivCoverImg)
+
+        //根据是否收藏，设置不同的 Drawable
+        if (item.isCollect ||
+                (null != MyApplication.currentUser && MyApplication.currentUser!!.isArticleCollected(item.id))) {
+            Glide.with(MyApplication.context).load(R.drawable.app_like).into(holder.ivLike)
+        } else {
+            Glide.with(MyApplication.context).load(R.drawable.app_unlike).into(holder.ivLike)
+        }
     }
 
-    class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(context: Context, itemView: View?) : RecyclerView.ViewHolder(itemView) {
+
+        lateinit var article: Article
 
         @BindView(R.id.main_project_item_tvProjectAuthor)
         lateinit var tvAuthor: TextView
@@ -54,8 +68,14 @@ class ProjectAdapter(context: Context, list: MutableList<Article>)
         @BindView(R.id.main_project_item_ivCoverImg)
         lateinit var ivCoverImg: ImageView
 
+        @BindView(R.id.main_project_item_ivLike)
+        lateinit var ivLike: ImageView
+
         init {
             ButterKnife.bind(this, itemView!!)
+            itemView!!.setOnClickListener {
+                ArticleDetailActivity.show(context, article)
+            }
         }
 
     }

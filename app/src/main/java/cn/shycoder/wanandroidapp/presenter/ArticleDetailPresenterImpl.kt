@@ -41,9 +41,7 @@ class ArticleDetailPresenterImpl(private val context: Context) : ArticleDetailCo
                         Logger.i("Collect article")
                         view?.collectedArticle(true)
                         this.mArticle!!.isCollect = true
-                        if (!MyApplication.currentUser?.collectIds!!.contains(mArticle!!.id)) {
-                            MyApplication.currentUser?.collectIds!!.add(mArticle!!.id)
-                        }
+                        MyApplication.currentUser?.addCollectedArticle(article.id)
                     } else {
                         Logger.e(it.errorMsg)
                     }
@@ -52,7 +50,7 @@ class ArticleDetailPresenterImpl(private val context: Context) : ArticleDetailCo
                 })
 
     }
-
+    
     override fun cancelCollectArticle(article: Article) {
         UserService
                 .instance
@@ -63,7 +61,7 @@ class ArticleDetailPresenterImpl(private val context: Context) : ArticleDetailCo
                     if (it.errorCode == 0) {
                         view?.collectedArticle(false)
                         this.mArticle!!.isCollect = false
-                        MyApplication.currentUser!!.collectIds!!.remove(mArticle!!.id)
+                        MyApplication.currentUser?.removeColletedArticle(article.id)
                     } else {
                         Logger.e(it.errorMsg)
                     }
@@ -73,7 +71,6 @@ class ArticleDetailPresenterImpl(private val context: Context) : ArticleDetailCo
     }
 
     override fun shareArticle(article: Article) {
-
     }
 
     override fun openArticleInSystemBrowser(article: Article) {

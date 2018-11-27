@@ -10,6 +10,7 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import cn.shycoder.wanandroidapp.R
+import cn.shycoder.wanandroidapp.model.entity.Article
 import cn.shycoder.wanandroidapp.model.entity.KnowledgeNode
 import cn.shycoder.wanandroidapp.utils.MyApplication
 import cn.shycoder.wanandroidapp.utils.MyApplication.Companion.context
@@ -25,7 +26,7 @@ class KnowledgeSystemNodeAdapter(context: Context, list: MutableList<KnowledgeNo
         val view = LayoutInflater
                 .from(MyApplication.context)
                 .inflate(R.layout.recycler_view_list_item_knowledge, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(context, view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
@@ -34,7 +35,8 @@ class KnowledgeSystemNodeAdapter(context: Context, list: MutableList<KnowledgeNo
         holder.tvKnowledgeSystemNodeTitle.text = item.name
     }
 
-    class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(context: Context, itemView: View?) : RecyclerView.ViewHolder(itemView) {
+
 
         lateinit var knowledgeNode: KnowledgeNode
 

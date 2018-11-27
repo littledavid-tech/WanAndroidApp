@@ -45,12 +45,8 @@ class ArticleAdapter(context: Context, list: MutableList<Article>)
             holder.tvTag.visibility = View.GONE
         }
 
-        //根据是否收藏，设置不同的 Drawable
-        val isCollect = null != MyApplication.currentUser &&
-                null != MyApplication.currentUser!!.collectIds &&
-                MyApplication.currentUser!!.collectIds!!.contains(item.id)
-
-        if (item.isCollect || isCollect) {
+        if (item.isCollect ||
+                (null != MyApplication.currentUser && MyApplication.currentUser!!.isArticleCollected(item.id))) {
             item.isCollect = true
             Glide.with(MyApplication.context).load(R.drawable.app_like).into(holder.ivLike)
         } else {

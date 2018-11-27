@@ -3,10 +3,8 @@ package cn.shycoder.wanandroidapp.utils
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
-import android.content.SharedPreferences
-import android.view.Display
 import android.widget.Toast
-import cn.shycoder.wanandroidapp.model.entity.UserInfo
+import cn.shycoder.wanandroidapp.model.entity.User
 import com.orhanobut.logger.AndroidLogAdapter
 
 /**
@@ -67,6 +65,6 @@ class MyApplication : Application() {
         /**
          * 当前登录到系统中的用户
          * */
-        var currentUser: UserInfo? = null
+        var currentUser: User? = null
     }
 }

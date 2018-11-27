@@ -12,8 +12,8 @@ import butterknife.ButterKnife
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.model.entity.Article
 import cn.shycoder.wanandroidapp.utils.MyApplication
+import cn.shycoder.wanandroidapp.view.activity.ArticleDetailActivity
 import com.bumptech.glide.Glide
-
 
 class KnowledgeSystemArticleAdapter(context: Context, list: MutableList<Article>)
     : BaseRecyclerViewAdapter<Article, KnowledgeSystemArticleAdapter.ViewHolder>(context, list) {
@@ -24,25 +24,28 @@ class KnowledgeSystemArticleAdapter(context: Context, list: MutableList<Article>
                 .inflate(R.layout.recycler_view_list_item_knowledge_system_node_article,
                         parent,
                         false)
-        return ViewHolder(view)
+        return ViewHolder(context, view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         val item = list[position]
-
-        holder!!.tvTitle.text = item.title
+        holder!!.article = item
+        holder.tvTitle.text = item.title
         holder.tvAuthor.text = item.author
         holder.tvTime.text = item.niceDate
 
         //根据是否收藏，设置不同的 Drawable
-        if (item.isCollect) {
+        if (item.isCollect ||
+                (null != MyApplication.currentUser && MyApplication.currentUser!!.isArticleCollected(item.id))) {
             Glide.with(MyApplication.context).load(R.drawable.app_like).into(holder.ivLike)
         } else {
             Glide.with(MyApplication.context).load(R.drawable.app_unlike).into(holder.ivLike)
         }
     }
 
-    class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(context: Context, itemView: View?) : RecyclerView.ViewHolder(itemView) {
+
+        lateinit var article: Article
 
         @BindView(R.id.knowledge_system_article_item_tvTitle)
         lateinit var tvTitle: TextView
@@ -58,6 +61,9 @@ class KnowledgeSystemArticleAdapter(context: Context, list: MutableList<Article>
 
         init {
             ButterKnife.bind(this, itemView!!)
+            itemView.setOnClickListener {
+                ArticleDetailActivity.show(context, article)
+            }
         }
     }
 }

@@ -6,9 +6,8 @@ import android.support.design.widget.TextInputEditText
 import android.widget.Button
 import butterknife.BindView
 import cn.shycoder.wanandroidapp.R
-import cn.shycoder.wanandroidapp.model.entity.UserInfo
+import cn.shycoder.wanandroidapp.model.entity.User
 import cn.shycoder.wanandroidapp.presenter.LoginPresenterImpl
-import cn.shycoder.wanandroidapp.presenter.contract.BaseContract
 import cn.shycoder.wanandroidapp.presenter.contract.LoginContract
 import cn.shycoder.wanandroidapp.utils.MyApplication
 import cn.shycoder.wanandroidapp.utils.ToastUtils
@@ -41,7 +40,7 @@ class LoginActivity : BaseToolBarActivity<LoginPresenterImpl>(), LoginContract.V
         return "Login"
     }
 
-    override fun loginSuccessful(userInfo: UserInfo) {
+    override fun loginSuccessful(userInfo: User) {
         ToastUtils.show(R.string.login_msg_login_successfully)
         MyApplication.currentUser = userInfo
         this.finish()
