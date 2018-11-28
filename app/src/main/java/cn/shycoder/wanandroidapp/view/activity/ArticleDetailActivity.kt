@@ -41,10 +41,6 @@ class ArticleDetailActivity
     override fun doInit() {
         super.doInit()
         webView.settings.javaScriptEnabled = true
-    }
-
-    override fun onResume() {
-        super.onResume()
         presenter!!.loadArticle(this.intent)
     }
 
@@ -70,7 +66,6 @@ class ArticleDetailActivity
     }
 
     override fun collectedArticle(isCollected: Boolean) {
-        Logger.d("设置ICON")
         this.mIsCollected = isCollected
         if (this.mOptionMenu != null) {
             val collectMenu = this.mOptionMenu!!.findItem(R.id.article_detail_menu_collect)

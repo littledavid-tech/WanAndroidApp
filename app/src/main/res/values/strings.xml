@@ -28,4 +28,6 @@
     <string name="article_detail_title">文章详情</string>
     <string name="article_detail_msg_share_function_will_be_added_soon">分享功能将会很快添加</string>
     <string name="app_msg_please_login">请先登录</string>
+    <string name="my_collected_activity_title">我的收藏</string>
+    <string name="my_collected_popup_menu_remove">移除</string>
 </resources>

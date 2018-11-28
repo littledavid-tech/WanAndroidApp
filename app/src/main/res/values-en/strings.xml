@@ -28,4 +28,6 @@
     <string name="article_detail_title">Article Detail</string>
     <string name="article_detail_msg_share_function_will_be_added_soon">Share function will be added soon</string>
     <string name="app_msg_please_login">Please login</string>
+    <string name="my_collected_activity_title">My Collected</string>
+    <string name="my_collected_popup_menu_remove">Remove</string>
 </resources>

@@ -3,6 +3,7 @@ package cn.shycoder.wanandroidapp.adapter.recyclerview
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import java.text.FieldPosition
 
 /**
  * Created by ITSoftware on 11/7/2018.
@@ -27,5 +28,10 @@ abstract class BaseRecyclerViewAdapter<T, VH : RecyclerView.ViewHolder>(val cont
     fun addList(datas: List<T>) {
         list.addAll(datas)
         notifyDataSetChanged()
+    }
+
+    fun removeAt(position: Int) {
+        list.removeAt(position)
+        this.notifyItemChanged(position)
     }
 }

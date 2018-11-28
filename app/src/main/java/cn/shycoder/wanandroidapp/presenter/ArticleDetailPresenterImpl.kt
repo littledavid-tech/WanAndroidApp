@@ -2,7 +2,6 @@ package cn.shycoder.wanandroidapp.presenter
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.model.api.UserService
 import cn.shycoder.wanandroidapp.model.entity.Article
@@ -50,7 +49,7 @@ class ArticleDetailPresenterImpl(private val context: Context) : ArticleDetailCo
                 })
 
     }
-    
+
     override fun cancelCollectArticle(article: Article) {
         UserService
                 .instance
@@ -105,6 +104,8 @@ class ArticleDetailPresenterImpl(private val context: Context) : ArticleDetailCo
                 intent.getParcelableExtra(ArticleDetailActivity.INTENT_EXTRA_ARTICLE) as Article
         Logger.i("ArticleId:${mArticle!!.id}")
         this.view!!.openArticle(mArticle!!.link!!)
-        this.view!!.collectedArticle(mArticle!!.isCollect)
+        val isCollected = MyApplication.currentUser != null &&
+                MyApplication.currentUser!!.isArticleCollected(mArticle!!.id)
+        this.view!!.collectedArticle(isCollected)
     }
 }

@@ -24,7 +24,7 @@ interface UserService {
      * */
     @Headers(NetConst.SET_COOKIE + ":xx")
     @GET("/lg/collect/list/{page}/json")
-    fun collectedArticleList(): Observable<SuperEntity<Paging<Article>>>
+    fun getCollectedArticleList(@Path("page") pageIndex: Int): Observable<SuperEntity<Paging<Article>>>
 
     /**
      * 收藏站内文章的API列表
