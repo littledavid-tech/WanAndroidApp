@@ -48,7 +48,14 @@ class KnowledgeSystemNodeAdapter(context: Context, list: MutableList<KnowledgeNo
 
         init {
             ButterKnife.bind(this, itemView!!)
-            ivOpen.setOnClickListener {
+
+//            ivOpen.setOnClickListener {
+//                SubKnowledgeSystemActivity.show(context,
+//                        knowledgeNode.name!!,
+//                        knowledgeNode.children!!.toTypedArray())
+//            }
+
+            itemView.setOnClickListener {
                 SubKnowledgeSystemActivity.show(context,
                         knowledgeNode.name!!,
                         knowledgeNode.children!!.toTypedArray())

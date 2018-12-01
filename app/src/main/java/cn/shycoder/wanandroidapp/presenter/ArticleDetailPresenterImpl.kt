@@ -106,6 +106,8 @@ class ArticleDetailPresenterImpl(private val context: Context) : ArticleDetailCo
         this.view!!.openArticle(mArticle!!.link!!)
         val isCollected = MyApplication.currentUser != null &&
                 MyApplication.currentUser!!.isArticleCollected(mArticle!!.id)
+        Logger.i("ID:${mArticle!!.id}")
+        Logger.i(isCollected.toString())
         this.view!!.collectedArticle(isCollected)
     }
 }
