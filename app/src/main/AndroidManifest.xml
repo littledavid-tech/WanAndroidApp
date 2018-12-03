@@ -32,7 +32,7 @@
         <activity android:name=".view.activity.ProjectListActivity" />
         <activity android:name=".view.activity.LoginActivity" />
         <activity android:name=".view.activity.ArticleDetailActivity" />
-        <activity android:name=".view.activity.MyCollectedActivity" />
+        <activity android:name=".view.activity.MyCollectedArticleActivity" />
 
     </application>
 

@@ -3,6 +3,7 @@ package cn.shycoder.wanandroidapp.adapter.recyclerview
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import com.orhanobut.logger.Logger
 import java.text.FieldPosition
 
 /**
@@ -32,6 +33,8 @@ abstract class BaseRecyclerViewAdapter<T, VH : RecyclerView.ViewHolder>(val cont
 
     fun removeAt(position: Int) {
         list.removeAt(position)
-        this.notifyItemChanged(position)
+        //因为XRecyclerView组件，添加了头部，所以这里的position需要+1
+        //才能正常移除item
+        this.notifyItemRemoved(position + 1)
     }
 }

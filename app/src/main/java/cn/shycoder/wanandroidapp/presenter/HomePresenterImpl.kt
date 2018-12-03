@@ -8,7 +8,7 @@ import cn.shycoder.wanandroidapp.model.api.UserService
 import cn.shycoder.wanandroidapp.presenter.contract.HomeContract
 import cn.shycoder.wanandroidapp.utils.MyApplication
 import cn.shycoder.wanandroidapp.view.activity.LoginActivity
-import cn.shycoder.wanandroidapp.view.activity.MyCollectedActivity
+import cn.shycoder.wanandroidapp.view.activity.MyCollectedArticleActivity
 import cn.shycoder.wanandroidapp.view.fragment.ArticleFragment
 import cn.shycoder.wanandroidapp.view.fragment.KnowledgeSystemFragment
 import cn.shycoder.wanandroidapp.view.fragment.ProjectFragment
@@ -66,7 +66,7 @@ class HomePresenterImpl
                 MyApplication.removeSPByKey(SPKeyConst.sp_key_password)
             }
             R.id.main_menu_my_collect -> {//我的收藏
-                MyCollectedActivity.show(context)
+                MyCollectedArticleActivity.show(context)
             }
             else -> {
                 Logger.e("Unknown option")

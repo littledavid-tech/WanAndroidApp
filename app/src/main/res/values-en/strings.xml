@@ -30,4 +30,5 @@
     <string name="app_msg_please_login">Please login</string>
     <string name="my_collected_activity_title">My Collected</string>
     <string name="my_collected_popup_menu_remove">Remove</string>
+    <string name="my_collected_article_remove_failed">Failed to remove article</string>
 </resources>

@@ -1,6 +1,5 @@
 package cn.shycoder.wanandroidapp.presenter
 
-import cn.shycoder.wanandroidapp.model.api.HomeArticleService
 import cn.shycoder.wanandroidapp.model.api.UserService
 import cn.shycoder.wanandroidapp.presenter.contract.MyCollectedArticleListContract
 import com.orhanobut.logger.Logger
@@ -8,9 +7,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-/**
- * Created by ShyCoder on 11/28/2018.
- */
 class MyCollectedArticlePresenterImpl() : MyCollectedArticleListContract.Presenter {
 
     override var view: MyCollectedArticleListContract.View? = null
@@ -47,27 +43,23 @@ class MyCollectedArticlePresenterImpl() : MyCollectedArticleListContract.Present
                 .getCollectedArticleList(this.mCurrentPageIndex)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        {
-                            Logger.i("Loaded data in presenter!")
-                            this.mTotalPageCount = it.data?.pageCount!!
-                            Logger.i("Current Page:${this.mCurrentPageIndex} " +
-                                    "Total Page Count${this.mTotalPageCount}")
-                            if (isRefresh)
-                                view?.refreshedData(it.data!!.datas!!)
-                            else
-                                view?.loadedData(it.data!!.datas!!)
-                        },
-                        {
-                            it.printStackTrace()
-                            Logger.e("Meet a error in RxJava")
-                        },
-                        {
+                .subscribe({
+                    Logger.i("Loaded data in presenter!")
+                    this.mTotalPageCount = it.data?.pageCount!!
+                    Logger.i("Current Page:${this.mCurrentPageIndex} " +
+                            "Total Page Count${this.mTotalPageCount}")
+                    if (isRefresh)
+                        view?.refreshedData(it.data!!.datas!!)
+                    else
+                        view?.loadedData(it.data!!.datas!!)
+                }, {
+                    it.printStackTrace()
+                    Logger.e("Meet a error in RxJava")
+                }, {
 
-                        },
-                        {
-                            disposable = it
-                        })
+                }, {
+                    disposable = it
+                })
     }
 
     /**
@@ -80,14 +72,18 @@ class MyCollectedArticlePresenterImpl() : MyCollectedArticleListContract.Present
     /**
      * 移除收藏的文章
      * */
-    override fun removeCollectedArticle(articleId: Int, position: Int) {
+    override fun removeCollectedArticle(collectedArticleId: Int, originId: Int, position: Int) {
         UserService
                 .instance
-                .cancelCollect(articleId)
+                .cancelCollect(collectedArticleId, originId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    view?.removedCollectedArticle(position)
+                    if (0 != it.errorCode) {
+                        this.view?.removeCollectedArticleFailed()
+                    } else {
+                        view?.removedCollectedArticle(position)
+                    }
                 }, {
                     it.printStackTrace()
                 })

@@ -5,4 +5,5 @@ package cn.shycoder.wanandroidapp.model
  */
 object NetConst {
     const val SET_COOKIE = "Set-Cookie"
+    const val COOKIE_HEADER = "$SET_COOKIE:xx"
 }
