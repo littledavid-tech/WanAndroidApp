@@ -14,6 +14,7 @@ import butterknife.ButterKnife
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.model.entity.Article
 import cn.shycoder.wanandroidapp.model.entity.CollectedArticle
+import cn.shycoder.wanandroidapp.view.activity.CollectedArticleDetailActivity
 import retrofit2.http.POST
 
 /**
@@ -52,6 +53,10 @@ class MyCollectedArticleAdapter(context: Context, list: MutableList<CollectedArt
                 true
             }
             popupMenu.show()
+        }
+
+        holder.tvTitle.setOnClickListener {
+            CollectedArticleDetailActivity.show(context, item)
         }
     }
 

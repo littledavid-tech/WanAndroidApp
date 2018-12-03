@@ -12,7 +12,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <WebView
-            android:id="@+id/article_detail_web_view"
+            android:id="@+id/collected_article_detail_web_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </android.support.v4.widget.NestedScrollView>

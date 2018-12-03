@@ -33,6 +33,7 @@
         <activity android:name=".view.activity.LoginActivity" />
         <activity android:name=".view.activity.ArticleDetailActivity" />
         <activity android:name=".view.activity.MyCollectedArticleActivity" />
+        <activity android:name=".view.activity.CollectedArticleDetailActivity" />
 
     </application>
 

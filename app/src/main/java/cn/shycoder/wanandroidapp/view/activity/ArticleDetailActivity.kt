@@ -32,7 +32,6 @@ class ArticleDetailActivity
 
     private var mIsCollected = false//文章是否被收藏
 
-
     override fun getLayoutResId(): Int {
         return R.layout.article_detail_activity
     }
@@ -91,7 +90,6 @@ class ArticleDetailActivity
         fun show(context: Context, article: Article) {
             val intent = Intent(context, ArticleDetailActivity::class.java)
             intent.putExtra(INTENT_EXTRA_ARTICLE, article)
-//            intent.putExtra(INTENT_EXTRA_ARTICLE, article)
             context.startActivity(intent)
         }
 

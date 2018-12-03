@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/collected_article_detail_menu_share"
+        android:icon="@drawable/article_detail_menu_icon_share"
+        android:title="@string/article_detail_option_menu_share" />
+    <item
+        android:id="@+id/collected_article_detail_menu_open_in_system_browser"
+        android:icon="@drawable/article_detail_menu_icon_browser"
+        android:title="@string/article_detail_option_menu_open_in_system_browser" />
+</menu>
