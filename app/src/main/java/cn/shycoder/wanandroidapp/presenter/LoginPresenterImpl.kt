@@ -9,10 +9,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class LoginPresenterImpl : LoginContract.Presenter {
-
-    override var view: LoginContract.View? = null
-    override var disposable: Disposable? = null
+class LoginPresenterImpl
+    : BasePresenter<LoginContract.View>(), LoginContract.Presenter {
 
     override fun login(username: String, password: String) {
         if (username.isEmpty() || password.isEmpty()) {
@@ -38,11 +36,12 @@ class LoginPresenterImpl : LoginContract.Presenter {
                         }
                     }
                 }, {
+                    this.disposeException(it)
                     it.printStackTrace()
                 }, {
 
                 }, {
-                    this.disposable = it
+                    this.addDisposable(it)
                 })
     }
 

@@ -11,10 +11,8 @@ import io.reactivex.schedulers.Schedulers
  * 知识体系下的文章的Presenter
  * @param cid 文章的分类id
  * */
-class KnowledgeSystemArticlePresenterImpl(val cid: Int) : KnowledgeSystemArticleContract.Presenter {
-
-    override var view: KnowledgeSystemArticleContract.View? = null
-    override var disposable: Disposable? = null
+class KnowledgeSystemArticlePresenterImpl(val cid: Int) :
+        BasePresenter<KnowledgeSystemArticleContract.View>(), KnowledgeSystemArticleContract.Presenter {
 
     private var mCurrentPageIndex = 0
     private var mTotalPageCount = 1
@@ -44,26 +42,22 @@ class KnowledgeSystemArticlePresenterImpl(val cid: Int) : KnowledgeSystemArticle
                 .getArticles(mCurrentPageIndex, this.cid)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        {
-
-                            Logger.i("Loaded knowledge system data!")
-                            this.mTotalPageCount = it.data?.pageCount!!
-                            Logger.i("Current Page:${this.mCurrentPageIndex} " +
-                                    "Total Page Count${this.mTotalPageCount}")
-                            if (isRefresh)
-                                view?.refreshedData(it.data!!.datas!!)
-                            else
-                                view?.loadedData(it.data!!.datas!!)
-                        },
-                        {
-                            Logger.e("Meet a error in knowledge system!")
-                            it.printStackTrace()
-                        },
-                        {
-                        },
-                        {
-                            disposable = it
-                        })
+                .subscribe({
+                    Logger.i("Loaded knowledge system data!")
+                    this.mTotalPageCount = it.data?.pageCount!!
+                    Logger.i("Current Page:${this.mCurrentPageIndex} " +
+                            "Total Page Count${this.mTotalPageCount}")
+                    if (isRefresh)
+                        view?.refreshedData(it.data!!.datas!!)
+                    else
+                        view?.loadedData(it.data!!.datas!!)
+                }, {
+                    this.disposeException(it)
+                    Logger.e("Meet a error in knowledge system!")
+                    it.printStackTrace()
+                }, {
+                }, {
+                    addDisposable(it)
+                })
     }
 }

@@ -9,10 +9,8 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by ITSoftware on 11/8/2018.
  */
-class KnowledgeSystemPresenterImpl() : KnowledgeSystemContract.Presenter {
-
-    override var view: KnowledgeSystemContract.View? = null
-    override var disposable: Disposable? = null
+class KnowledgeSystemPresenterImpl() :
+        BasePresenter<KnowledgeSystemContract.View>(), KnowledgeSystemContract.Presenter {
 
     override fun loadMore() {
         loadData()
@@ -31,22 +29,16 @@ class KnowledgeSystemPresenterImpl() : KnowledgeSystemContract.Presenter {
                 .getAllKnowledgeNode()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        {
-                            view!!.loadedKnowledge(it.data!!)
-                        }
-                        ,
-                        {
+                .subscribe({
+                    view!!.loadedKnowledge(it.data!!)
+                }, {
+                    this.disposeException(it)
+                    it.printStackTrace()
+                }, {
 
-                        }
-                        ,
-                        {
-
-                        }
-                        ,
-                        {
-                            this.disposable = it
-                        })
+                }, {
+                    this.addDisposable(it)
+                })
 
     }
 

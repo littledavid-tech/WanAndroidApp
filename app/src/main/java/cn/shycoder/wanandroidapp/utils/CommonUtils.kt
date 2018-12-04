@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 
 /**
  * Created by ShyCoder on 11/26/2018.
@@ -32,5 +34,12 @@ object CommonUtils {
             return true
         }
         return false
+    }
+
+    /**
+     * 判断异常是否是网络异常
+     * */
+    fun isNetworkException(throwable: Throwable): Boolean {
+        return throwable is SocketTimeoutException || throwable is UnknownHostException
     }
 }

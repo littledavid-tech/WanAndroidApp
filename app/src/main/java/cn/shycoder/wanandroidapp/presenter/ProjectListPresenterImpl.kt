@@ -8,10 +8,8 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 
-class ProjectListPresenterImpl(val cid: Int) : ProjectListContract.Presenter {
-
-    override var view: ProjectListContract.View? = null
-    override var disposable: Disposable? = null
+class ProjectListPresenterImpl(val cid: Int)
+    : BasePresenter<ProjectListContract.View>(), ProjectListContract.Presenter {
 
     private var mCurrentPageIndex = 1
     private var mTotalPageCount = 1
@@ -43,24 +41,21 @@ class ProjectListPresenterImpl(val cid: Int) : ProjectListContract.Presenter {
                 .getProjectList(this.mCurrentPageIndex, this.cid)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        {
-                            Logger.i("Loaded data in presenter!")
-                            this.mTotalPageCount = it.data?.pageCount!!
-                            Logger.i("Current Page:${this.mCurrentPageIndex} " +
-                                    "Total Page Count${this.mTotalPageCount}")
-                            if (isRefresh)
-                                view?.refreshedData(it.data!!.datas!!)
-                            else
-                                view?.loadedData(it.data!!.datas!!)
-                        },
-                        {
-                            Logger.e("Meet a error in RxJava")
-                        },
-                        {
-                        },
-                        {
-                            disposable = it
-                        })
+                .subscribe({
+                    Logger.i("Loaded data in presenter!")
+                    this.mTotalPageCount = it.data?.pageCount!!
+                    Logger.i("Current Page:${this.mCurrentPageIndex} " +
+                            "Total Page Count${this.mTotalPageCount}")
+                    if (isRefresh)
+                        view?.refreshedData(it.data!!.datas!!)
+                    else
+                        view?.loadedData(it.data!!.datas!!)
+                }, {
+                    this.disposeException(it)
+                    Logger.e("Meet a error in RxJava")
+                }, {
+                }, {
+                    this.addDisposable(it)
+                })
     }
 }

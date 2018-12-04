@@ -7,6 +7,7 @@ import android.view.MenuItem
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.SPKeyConst
 import cn.shycoder.wanandroidapp.model.api.UserService
+import cn.shycoder.wanandroidapp.presenter.contract.BaseContract
 import cn.shycoder.wanandroidapp.presenter.contract.HomeContract
 import cn.shycoder.wanandroidapp.utils.MyApplication
 import cn.shycoder.wanandroidapp.view.activity.LoginActivity
@@ -22,14 +23,9 @@ import io.reactivex.schedulers.Schedulers
 
 
 class HomePresenterImpl
-    : HomeContract.Presenter {
-
+    : BasePresenter<HomeContract.View>(), HomeContract.Presenter {
 
     private var mFragmentMap: HashMap<Int, Fragment?> = hashMapOf()
-
-    override var view: HomeContract.View? = null
-
-    override var disposable: Disposable? = null
 
     override fun createHomeFragment(menuId: Int): Fragment {
         var fragment = mFragmentMap[menuId]
@@ -95,7 +91,12 @@ class HomePresenterImpl
                     MyApplication.currentUser = if (it.errorCode == 0) it.data else null
                     view?.reloadNavigationMenu()
                 }, {
+                    this.disposeException(it)
                     it.printStackTrace()
+                }, {
+
+                }, {
+                    this.addDisposable(it)
                 })
     }
 
@@ -108,7 +109,7 @@ class HomePresenterImpl
     }
 
     override fun onDestroy() {
-        mFragmentMap.clear()
+        this.mFragmentMap.clear()
         super.onDestroy()
     }
 }

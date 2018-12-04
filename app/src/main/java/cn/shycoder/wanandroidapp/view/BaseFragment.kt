@@ -7,12 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import butterknife.ButterKnife
 import butterknife.Unbinder
+import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.presenter.contract.BaseContract
+import cn.shycoder.wanandroidapp.utils.ToastUtils
 
 /**
  * 所有Fragment的基类
  */
-abstract class BaseFragment<T : BaseContract.Presenter<*>> : Fragment() {
+abstract class BaseFragment<T : BaseContract.Presenter<*>>
+    : Fragment(),
+        BaseContract.View {
 
     /**
      * 解绑黄油刀的对象
@@ -46,6 +50,14 @@ abstract class BaseFragment<T : BaseContract.Presenter<*>> : Fragment() {
     abstract fun getLayoutResId(): Int
 
     abstract fun doInit()
+
+    override fun onNetworkException(throwable: Throwable) {
+        ToastUtils.show(R.string.app_networw_exception)
+    }
+
+    override fun onUnknownException(throwable: Throwable) {
+        ToastUtils.show(R.string.app_unkown_exception)
+    }
 
     /**
      * 创建与当前View相绑定的Presenter

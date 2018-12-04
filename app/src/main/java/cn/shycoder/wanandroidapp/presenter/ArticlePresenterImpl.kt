@@ -8,6 +8,7 @@ import cn.shycoder.wanandroidapp.model.entity.Paging
 import cn.shycoder.wanandroidapp.model.entity.SuperEntity
 import cn.shycoder.wanandroidapp.presenter.contract.ArticleContract
 import cn.shycoder.wanandroidapp.utils.CommonUtils
+import cn.shycoder.wanandroidapp.utils.MyApplication.Companion.context
 import com.orhanobut.logger.Logger
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -15,10 +16,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 class ArticlePresenterImpl(private val context: Context)
-    : ArticleContract.Presenter {
-
-    override var view: ArticleContract.View? = null
-    override var disposable: Disposable? = null
+    : BasePresenter<ArticleContract.View>(), ArticleContract.Presenter {
 
     private var mCurrentPageIndex = 0
     private var mTotalPageCount = 1
@@ -52,26 +50,22 @@ class ArticlePresenterImpl(private val context: Context)
                 .getArticles(mCurrentPageIndex)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        {
-                            Logger.i("Loaded data in presenter!")
-                            this.mTotalPageCount = it.data?.pageCount!!
-                            Logger.i("Current Page:${this.mCurrentPageIndex} " +
-                                    "Total Page Count${this.mTotalPageCount}")
-                            if (isRefresh)
-                                view?.refreshedData(it.data!!.datas!!)
-                            else
-                                view?.loadedData(it.data!!.datas!!)
-                        },
-                        {
-                            Logger.e("Meet a error in RxJava")
-                        },
-                        {
-
-                        },
-                        {
-                            disposable = it
-                        })
+                .subscribe({
+                    Logger.i("Loaded data in presenter!")
+                    this.mTotalPageCount = it.data?.pageCount!!
+                    Logger.i("Current Page:${this.mCurrentPageIndex} " +
+                            "Total Page Count${this.mTotalPageCount}")
+                    if (isRefresh)
+                        view?.refreshedData(it.data!!.datas!!)
+                    else
+                        view?.loadedData(it.data!!.datas!!)
+                }, {
+                    disposeException(it)
+                    it.printStackTrace()
+                }, {
+                }, {
+                    addDisposable(it)
+                })
     }
 
     /**
@@ -83,15 +77,17 @@ class ArticlePresenterImpl(private val context: Context)
                 .getBanners()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        {
-                            val banners = it.data!!
-                            view!!.loadedBanner(banners)
-                        },
-                        {
-                            it.printStackTrace()
-                            Logger.e("Meet a error in RxJava")
-                        })
+                .subscribe({
+                    val banners = it.data!!
+                    view!!.loadedBanner(banners)
+                }, {
+                    this.disposeException(it)
+                    it.printStackTrace()
+                }, {
+
+                }, {
+                    this.addDisposable(it)
+                })
     }
 
     override fun disposeBannerClickEvent(banner: HomeBanner) {

@@ -11,10 +11,9 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by ShyCoder on 12/3/2018.
  */
-class SearchPresenterImpl : SearchContract.Presenter {
+class SearchPresenterImpl
+    : BasePresenter<SearchContract.View>(), SearchContract.Presenter {
 
-    override var view: SearchContract.View? = null
-    override var disposable: Disposable? = null
 
     override fun loadHotkey() {
         SearchService.instance
@@ -24,7 +23,12 @@ class SearchPresenterImpl : SearchContract.Presenter {
                 .subscribe({
                     this.view?.loadedHotkey(it.data!!)
                 }, {
+                    this.disposeException(it)
                     it.printStackTrace()
+                }, {
+
+                }, {
+                    this.addDisposable(it)
                 })
     }
 

@@ -10,10 +10,8 @@ import io.reactivex.disposables.Disposable
 /**
  * Created by ShyCoder on 11/13/2018.
  */
-class SubKnowledgeSystemPresenterImpl() : SubKnowledgeSystemContract.Presenter {
-
-    override var view: SubKnowledgeSystemContract.View? = null
-    override var disposable: Disposable? = null
+class SubKnowledgeSystemPresenterImpl()
+    : BasePresenter<SubKnowledgeSystemContract.View>(), SubKnowledgeSystemContract.Presenter {
 
     override fun loadTabs(intent: Intent) {
         //从Intent中获取子节点的数据

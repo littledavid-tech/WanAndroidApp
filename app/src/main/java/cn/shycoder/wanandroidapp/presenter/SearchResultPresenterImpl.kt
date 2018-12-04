@@ -11,9 +11,9 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by ShyCoder on 12/4/2018.
  */
-class SearchResultPresenterImpl(private val key: String) : SearchResultContract.Presenter {
-    override var view: SearchResultContract.View? = null
-    override var disposable: Disposable? = null
+class SearchResultPresenterImpl(private val key: String) :
+        BasePresenter<SearchResultContract.View>(), SearchResultContract.Presenter {
+
 
     private var mCurrentPageIndex = 0
     private var mTotalPageCount = 1
@@ -54,13 +54,14 @@ class SearchResultPresenterImpl(private val key: String) : SearchResultContract.
                                 view?.loadedData(it.data!!.datas!!)
                         },
                         {
+                            this.disposeException(it)
                             it.printStackTrace()
                         },
                         {
 
                         },
                         {
-                            disposable = it
+                            this.addDisposable(it)
                         })
     }
 

@@ -18,10 +18,8 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by ShyCoder on 11/26/2018.
  */
-class ArticleDetailPresenterImpl(private val context: Context) : ArticleDetailContract.Presenter {
-
-    override var view: ArticleDetailContract.View? = null
-    override var disposable: Disposable? = null
+class ArticleDetailPresenterImpl(private val context: Context)
+    : BasePresenter<ArticleDetailContract.View>(), ArticleDetailContract.Presenter {
     private var mArticle: Article? = null
 
     override fun collectArticle(article: Article) {
@@ -45,7 +43,12 @@ class ArticleDetailPresenterImpl(private val context: Context) : ArticleDetailCo
                         Logger.e(it.errorMsg)
                     }
                 }, {
+                    this.disposeException(it)
                     it.printStackTrace()
+                }, {
+
+                }, {
+                    this.addDisposable(it)
                 })
 
     }
@@ -65,7 +68,12 @@ class ArticleDetailPresenterImpl(private val context: Context) : ArticleDetailCo
                         Logger.e(it.errorMsg)
                     }
                 }, {
+                    this.disposeException(it)
                     it.printStackTrace()
+                }, {
+
+                }, {
+                    this.addDisposable(it)
                 })
     }
 

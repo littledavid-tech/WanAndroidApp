@@ -36,8 +36,6 @@ interface HomeContract {
 
         fun disposeOptionMenuEvent(context: Context, menuItem: MenuItem)
 
-        override fun onDestroy() {
-            view = null
-        }
+        override fun onDestroy()
     }
 }

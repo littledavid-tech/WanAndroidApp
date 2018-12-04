@@ -25,6 +25,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import org.json.JSONObject
+import java.net.SocketTimeoutException
 import java.net.URL
 
 class WelcomeActivity

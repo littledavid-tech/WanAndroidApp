@@ -7,11 +7,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class MyCollectedArticlePresenterImpl() : MyCollectedArticleListContract.Presenter {
-
-    override var view: MyCollectedArticleListContract.View? = null
-    override var disposable: Disposable? = null
-
+class MyCollectedArticlePresenterImpl() :
+        BasePresenter<MyCollectedArticleListContract.View>(), MyCollectedArticleListContract.Presenter {
     private var mCurrentPageIndex = 0
     private var mTotalPageCount = 1
 
@@ -53,12 +50,13 @@ class MyCollectedArticlePresenterImpl() : MyCollectedArticleListContract.Present
                     else
                         view?.loadedData(it.data!!.datas!!)
                 }, {
+                    this.disposeException(it)
                     it.printStackTrace()
                     Logger.e("Meet a error in RxJava")
                 }, {
 
                 }, {
-                    disposable = it
+                    this.addDisposable(it)
                 })
     }
 

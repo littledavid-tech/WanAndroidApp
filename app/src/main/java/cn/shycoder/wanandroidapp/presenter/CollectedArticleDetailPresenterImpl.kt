@@ -12,10 +12,8 @@ import cn.shycoder.wanandroidapp.view.activity.CollectedArticleDetailActivity
 import io.reactivex.disposables.Disposable
 
 
-class CollectedArticleDetailPresenterImpl(val context: Context) : CollectedArticleDetailContract.Presenter {
-
-    override var view: CollectedArticleDetailContract.View? = null
-    override var disposable: Disposable? = null
+class CollectedArticleDetailPresenterImpl(val context: Context)
+    : BasePresenter<CollectedArticleDetailContract.View>(), CollectedArticleDetailContract.Presenter {
 
     private var mCollectedArticle: CollectedArticle? = null
 

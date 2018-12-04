@@ -8,26 +8,23 @@ import io.reactivex.disposables.Disposable
 interface BaseContract {
 
     interface View {
+        fun onNetworkException(throwable: Throwable)
 
+        fun onUnknownException(throwable: Throwable)
     }
 
     interface Presenter<T : View> {
 
         var view: T?
+
         /**
-         * RxJava Disposable对象
+         * 处理发生的异常
          * */
-        var disposable: Disposable?
+        fun disposeException(throwable: Throwable)
 
         /**
          * 将View被释放的时候调用此方法进行回收资源操作
          * */
-        fun onDestroy() {
-            //释放占用的View
-            view = null
-            //切断异步操作
-            disposable?.dispose()
-        }
-
+        fun onDestroy()
     }
 }
