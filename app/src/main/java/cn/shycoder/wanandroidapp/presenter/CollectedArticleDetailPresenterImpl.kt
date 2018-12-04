@@ -5,11 +5,11 @@ import android.content.Intent
 import android.view.MenuItem
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.model.entity.CollectedArticle
+import cn.shycoder.wanandroidapp.presenter.base.BasePresenter
 import cn.shycoder.wanandroidapp.presenter.contract.CollectedArticleDetailContract
 import cn.shycoder.wanandroidapp.utils.CommonUtils
 import cn.shycoder.wanandroidapp.utils.ToastUtils
 import cn.shycoder.wanandroidapp.view.activity.CollectedArticleDetailActivity
-import io.reactivex.disposables.Disposable
 
 
 class CollectedArticleDetailPresenterImpl(val context: Context)

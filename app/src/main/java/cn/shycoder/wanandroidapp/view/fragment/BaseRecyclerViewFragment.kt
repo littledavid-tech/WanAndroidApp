@@ -10,7 +10,7 @@ import butterknife.BindView
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.view.BaseFragment
 import cn.shycoder.wanandroidapp.presenter.contract.BaseRecyclerViewContract
-import cn.shycoder.wanandroidapp.utils.MyApplication
+import cn.shycoder.wanandroidapp.MyApplication
 import com.jcodecraeer.xrecyclerview.XRecyclerView
 import com.orhanobut.logger.Logger
 

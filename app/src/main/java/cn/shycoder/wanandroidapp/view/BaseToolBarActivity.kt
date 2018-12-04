@@ -6,7 +6,7 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import butterknife.BindView
 import cn.shycoder.wanandroidapp.R
-import cn.shycoder.wanandroidapp.presenter.contract.BaseContract
+import cn.shycoder.wanandroidapp.presenter.base.BaseContract
 
 abstract class BaseToolBarActivity<T : BaseContract.Presenter<*>> : BaseActivity<T>() {
     @BindView(R.id.toolbar)

@@ -3,9 +3,9 @@ package cn.shycoder.wanandroidapp.presenter
 import android.content.Intent
 import cn.shycoder.wanandroidapp.model.bean.KnowledgeSystemTab
 import cn.shycoder.wanandroidapp.model.entity.KnowledgeNode
+import cn.shycoder.wanandroidapp.presenter.base.BasePresenter
 import cn.shycoder.wanandroidapp.presenter.contract.SubKnowledgeSystemContract
 import cn.shycoder.wanandroidapp.view.activity.SubKnowledgeSystemActivity
-import io.reactivex.disposables.Disposable
 
 /**
  * Created by ShyCoder on 11/13/2018.

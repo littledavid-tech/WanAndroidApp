@@ -3,7 +3,7 @@ package cn.shycoder.wanandroidapp.view
 import android.view.View
 import android.widget.ImageView
 import cn.shycoder.wanandroidapp.model.entity.HomeBanner
-import cn.shycoder.wanandroidapp.utils.MyApplication
+import cn.shycoder.wanandroidapp.MyApplication
 import com.bigkoo.convenientbanner.holder.Holder
 import com.bumptech.glide.Glide
 

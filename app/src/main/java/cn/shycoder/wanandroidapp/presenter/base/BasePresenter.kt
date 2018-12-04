@@ -1,6 +1,5 @@
-package cn.shycoder.wanandroidapp.presenter
+package cn.shycoder.wanandroidapp.presenter.base
 
-import cn.shycoder.wanandroidapp.presenter.contract.BaseContract
 import cn.shycoder.wanandroidapp.utils.CommonUtils
 import io.reactivex.disposables.Disposable
 

@@ -1,6 +1,4 @@
-package cn.shycoder.wanandroidapp.presenter.contract
-
-import io.reactivex.disposables.Disposable
+package cn.shycoder.wanandroidapp.presenter.base
 
 /**
  * Created by ShyCoder on 11/8/2018.

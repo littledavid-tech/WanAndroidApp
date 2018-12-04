@@ -1,10 +1,10 @@
 package cn.shycoder.wanandroidapp.presenter
 
 import cn.shycoder.wanandroidapp.model.api.ProjectService
+import cn.shycoder.wanandroidapp.presenter.base.BasePresenter
 import cn.shycoder.wanandroidapp.presenter.contract.ProjectListContract
 import com.orhanobut.logger.Logger
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 

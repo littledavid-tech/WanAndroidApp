@@ -1,15 +1,15 @@
 package cn.shycoder.wanandroidapp.presenter
 
-import android.app.SearchableInfo
 import android.content.Context
 import android.support.v4.app.Fragment
 import android.view.MenuItem
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.SPKeyConst
 import cn.shycoder.wanandroidapp.model.api.UserService
-import cn.shycoder.wanandroidapp.presenter.contract.BaseContract
+import cn.shycoder.wanandroidapp.presenter.base.BasePresenter
 import cn.shycoder.wanandroidapp.presenter.contract.HomeContract
-import cn.shycoder.wanandroidapp.utils.MyApplication
+import cn.shycoder.wanandroidapp.MyApplication
+import cn.shycoder.wanandroidapp.view.activity.AboutActivity
 import cn.shycoder.wanandroidapp.view.activity.LoginActivity
 import cn.shycoder.wanandroidapp.view.activity.MyCollectedArticleActivity
 import cn.shycoder.wanandroidapp.view.activity.SearchActivity
@@ -18,7 +18,6 @@ import cn.shycoder.wanandroidapp.view.fragment.KnowledgeSystemFragment
 import cn.shycoder.wanandroidapp.view.fragment.ProjectFragment
 import com.orhanobut.logger.Logger
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 
@@ -64,9 +63,13 @@ class HomePresenterImpl
                 MyApplication.removeSPByKey(SPKeyConst.sp_key_cookie)
                 MyApplication.removeSPByKey(SPKeyConst.sp_key_username)
                 MyApplication.removeSPByKey(SPKeyConst.sp_key_password)
+                this.view?.reloadNavigationMenu()
             }
             R.id.main_menu_my_collect -> {//我的收藏
                 MyCollectedArticleActivity.show(context)
+            }
+            R.id.main_menu_other_about -> {
+                AboutActivity.show(context)
             }
             else -> {
                 Logger.e("Unknown option")

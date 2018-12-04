@@ -2,7 +2,7 @@ package cn.shycoder.wanandroidapp.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
-import android.net.Network
+import cn.shycoder.wanandroidapp.MyApplication
 
 object NetworkUtils {
     /***

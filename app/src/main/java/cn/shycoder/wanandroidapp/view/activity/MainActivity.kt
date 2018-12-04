@@ -17,7 +17,7 @@ import cn.shycoder.wanandroidapp.view.BaseToolBarActivity
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.presenter.HomePresenterImpl
 import cn.shycoder.wanandroidapp.presenter.contract.HomeContract
-import cn.shycoder.wanandroidapp.utils.MyApplication
+import cn.shycoder.wanandroidapp.MyApplication
 import com.orhanobut.logger.Logger
 
 class MainActivity :

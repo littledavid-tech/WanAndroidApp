@@ -37,4 +37,6 @@
     <string name="app_networw_exception">Network Anomaly!</string>
     <string name="app_unkown_exception">Unknown Exception!</string>
     <string name="search_result_activity_title">Search Result</string>
+    <string name="about_activity_title">About</string>
+    <string name="about_label_author">Author</string>
 </resources>

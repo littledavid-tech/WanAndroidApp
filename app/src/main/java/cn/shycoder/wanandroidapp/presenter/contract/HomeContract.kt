@@ -3,6 +3,7 @@ package cn.shycoder.wanandroidapp.presenter.contract
 import android.content.Context
 import android.support.v4.app.Fragment
 import android.view.MenuItem
+import cn.shycoder.wanandroidapp.presenter.base.BaseContract
 
 
 interface HomeContract {

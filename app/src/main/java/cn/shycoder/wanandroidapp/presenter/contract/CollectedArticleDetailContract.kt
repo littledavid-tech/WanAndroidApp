@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.MenuItem
 import cn.shycoder.wanandroidapp.model.entity.CollectedArticle
+import cn.shycoder.wanandroidapp.presenter.base.BaseContract
 
 /**
  * Created by ShyCoder on 12/3/2018.

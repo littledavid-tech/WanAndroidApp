@@ -1,7 +1,7 @@
 package cn.shycoder.wanandroidapp.model
 
 import cn.shycoder.wanandroidapp.SPKeyConst
-import cn.shycoder.wanandroidapp.utils.MyApplication
+import cn.shycoder.wanandroidapp.MyApplication
 import okhttp3.Interceptor
 import okhttp3.Response
 

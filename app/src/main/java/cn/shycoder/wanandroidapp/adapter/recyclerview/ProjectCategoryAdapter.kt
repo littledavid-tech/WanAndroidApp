@@ -12,10 +12,9 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.model.bean.ProjectTab
-import cn.shycoder.wanandroidapp.utils.MyApplication
+import cn.shycoder.wanandroidapp.MyApplication
 import cn.shycoder.wanandroidapp.view.activity.ProjectListActivity
 import com.bumptech.glide.Glide
-import com.bumptech.glide.Glide.init
 import com.orhanobut.logger.Logger
 import java.util.*
 

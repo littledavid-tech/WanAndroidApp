@@ -2,12 +2,10 @@ package cn.shycoder.wanandroidapp.view
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.Toast
-import butterknife.BindString
 import butterknife.ButterKnife
 import butterknife.Unbinder
 import cn.shycoder.wanandroidapp.R
-import cn.shycoder.wanandroidapp.presenter.contract.BaseContract
+import cn.shycoder.wanandroidapp.presenter.base.BaseContract
 import cn.shycoder.wanandroidapp.utils.ToastUtils
 
 abstract class BaseActivity<T : BaseContract.Presenter<*>> :

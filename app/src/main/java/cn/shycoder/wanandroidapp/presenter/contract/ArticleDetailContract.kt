@@ -2,8 +2,8 @@ package cn.shycoder.wanandroidapp.presenter.contract
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.view.menu.BaseMenuPresenter
 import cn.shycoder.wanandroidapp.model.entity.Article
+import cn.shycoder.wanandroidapp.presenter.base.BaseContract
 
 /**
  * Created by ShyCoder on 11/26/2018.

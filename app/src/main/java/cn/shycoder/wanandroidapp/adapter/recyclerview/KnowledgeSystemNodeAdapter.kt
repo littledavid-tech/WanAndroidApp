@@ -10,10 +10,8 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import cn.shycoder.wanandroidapp.R
-import cn.shycoder.wanandroidapp.model.entity.Article
 import cn.shycoder.wanandroidapp.model.entity.KnowledgeNode
-import cn.shycoder.wanandroidapp.utils.MyApplication
-import cn.shycoder.wanandroidapp.utils.MyApplication.Companion.context
+import cn.shycoder.wanandroidapp.MyApplication
 import cn.shycoder.wanandroidapp.view.activity.SubKnowledgeSystemActivity
 
 /**

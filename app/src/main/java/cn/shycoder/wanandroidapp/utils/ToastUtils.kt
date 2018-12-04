@@ -1,6 +1,7 @@
 package cn.shycoder.wanandroidapp.utils
 
 import android.widget.Toast
+import cn.shycoder.wanandroidapp.MyApplication
 
 /**
  * 吐司工具类

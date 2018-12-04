@@ -9,7 +9,7 @@ import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.model.entity.User
 import cn.shycoder.wanandroidapp.presenter.LoginPresenterImpl
 import cn.shycoder.wanandroidapp.presenter.contract.LoginContract
-import cn.shycoder.wanandroidapp.utils.MyApplication
+import cn.shycoder.wanandroidapp.MyApplication
 import cn.shycoder.wanandroidapp.utils.ToastUtils
 import cn.shycoder.wanandroidapp.view.BaseToolBarActivity
 

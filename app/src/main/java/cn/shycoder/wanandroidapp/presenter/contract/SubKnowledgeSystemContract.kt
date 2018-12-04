@@ -2,6 +2,7 @@ package cn.shycoder.wanandroidapp.presenter.contract
 
 import android.content.Intent
 import cn.shycoder.wanandroidapp.model.bean.KnowledgeSystemTab
+import cn.shycoder.wanandroidapp.presenter.base.BaseContract
 
 /**
  * Created by ShyCoder on 11/13/2018.

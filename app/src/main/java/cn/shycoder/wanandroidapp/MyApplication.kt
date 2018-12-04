@@ -1,4 +1,4 @@
-package cn.shycoder.wanandroidapp.utils
+package cn.shycoder.wanandroidapp
 
 import android.annotation.SuppressLint
 import android.app.Application
@@ -6,6 +6,7 @@ import android.content.Context
 import android.widget.Toast
 import cn.shycoder.wanandroidapp.model.entity.User
 import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.Logger
 
 /**
  * 自定义的Application类，用来获取一些全局的信息
@@ -23,7 +24,12 @@ class MyApplication : Application() {
      * 初始化Logger
      * */
     private fun initLogger() {
-        com.orhanobut.logger.Logger.addLogAdapter(AndroidLogAdapter())
+        com.orhanobut.logger.Logger.addLogAdapter(object : AndroidLogAdapter() {
+            override fun isLoggable(priority: Int, tag: String?): Boolean {
+                //如果需要打印Log请将DEBUG的值改为true
+                return ConfigurationSetting.DEBUG
+            }
+        })
     }
 
     companion object {

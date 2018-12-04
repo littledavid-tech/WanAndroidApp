@@ -37,4 +37,11 @@
     <string name="app_networw_exception">网络异常!</string>
     <string name="app_unkown_exception">未知错误!</string>
     <string name="search_result_activity_title">搜索结果</string>
+    <string name="about_activity_title">关于</string>
+    <string name="about_api">http://wanandroid.com/</string>
+    <string name="about_github">"littledavid-tech "</string>
+    <string name="about_author">鲁迅认识的那只猹</string>
+    <string name="about_label_api">API</string>
+    <string name="about_label_github">Github</string>
+    <string name="about_label_author">作者</string>
 </resources>

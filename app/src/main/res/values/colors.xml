@@ -24,4 +24,6 @@
     <!--<color name="hot_key_color3">#efe9e7</color>-->
     <!--<color name="hot_key_color4">#09f1da</color>-->
 
+    <color name="about_activity_bg">#dfd8d8</color>
+
 </resources>

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import butterknife.ButterKnife
 import butterknife.Unbinder
 import cn.shycoder.wanandroidapp.R
-import cn.shycoder.wanandroidapp.presenter.contract.BaseContract
+import cn.shycoder.wanandroidapp.presenter.base.BaseContract
 import cn.shycoder.wanandroidapp.utils.ToastUtils
 
 /**

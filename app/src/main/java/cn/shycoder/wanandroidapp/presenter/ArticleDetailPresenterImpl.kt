@@ -5,14 +5,14 @@ import android.content.Intent
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.model.api.UserService
 import cn.shycoder.wanandroidapp.model.entity.Article
+import cn.shycoder.wanandroidapp.presenter.base.BasePresenter
 import cn.shycoder.wanandroidapp.presenter.contract.ArticleDetailContract
 import cn.shycoder.wanandroidapp.utils.CommonUtils
-import cn.shycoder.wanandroidapp.utils.MyApplication
+import cn.shycoder.wanandroidapp.MyApplication
 import cn.shycoder.wanandroidapp.utils.ToastUtils
 import cn.shycoder.wanandroidapp.view.activity.ArticleDetailActivity
 import com.orhanobut.logger.Logger
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 /**

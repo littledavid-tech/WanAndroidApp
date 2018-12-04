@@ -12,7 +12,7 @@ import butterknife.Unbinder
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.SPKeyConst
 import cn.shycoder.wanandroidapp.utils.DateTimeUtils
-import cn.shycoder.wanandroidapp.utils.MyApplication
+import cn.shycoder.wanandroidapp.MyApplication
 import cn.shycoder.wanandroidapp.utils.NetworkUtils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -25,7 +25,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import org.json.JSONObject
-import java.net.SocketTimeoutException
 import java.net.URL
 
 class WelcomeActivity

@@ -11,10 +11,9 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.model.entity.Article
-import cn.shycoder.wanandroidapp.utils.MyApplication
+import cn.shycoder.wanandroidapp.MyApplication
 import cn.shycoder.wanandroidapp.view.activity.ArticleDetailActivity
 import com.bumptech.glide.Glide
-import com.bumptech.glide.Glide.init
 
 /**
  * Created by ShyCoder on 11/15/2018.
