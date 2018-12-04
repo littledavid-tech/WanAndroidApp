@@ -34,6 +34,10 @@
         <activity android:name=".view.activity.ArticleDetailActivity" />
         <activity android:name=".view.activity.MyCollectedArticleActivity" />
         <activity android:name=".view.activity.CollectedArticleDetailActivity" />
+        <activity
+            android:name=".view.activity.SearchActivity"
+            android:label="" />
+        <activity android:name=".view.activity.SearchResultActivity" />
 
     </application>
 

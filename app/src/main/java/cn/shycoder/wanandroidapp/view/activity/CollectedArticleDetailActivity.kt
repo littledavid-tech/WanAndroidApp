@@ -62,11 +62,11 @@ class CollectedArticleDetailActivity
 
     companion object {
 
-        const val INTENT_EXTRA_COLLCTED_ARTICLE = "collected_article"
+        const val INTENT_EXTRA_COLLECTED_ARTICLE = "collected_article"
 
         fun show(context: Context, collectedArticle: CollectedArticle) {
             val intent = Intent(context, CollectedArticleDetailActivity::class.java)
-            intent.putExtra(INTENT_EXTRA_COLLCTED_ARTICLE, collectedArticle)
+            intent.putExtra(INTENT_EXTRA_COLLECTED_ARTICLE, collectedArticle)
             context.startActivity(intent)
         }
     }

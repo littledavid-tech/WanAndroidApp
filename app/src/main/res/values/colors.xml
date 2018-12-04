@@ -17,4 +17,11 @@
     <color name="main_project_block_green">#c0edbc</color>
     <color name="main_project_block_blue">#7eb7d1</color>
     <color name="main_project_block_cyan">#7952ead8</color>
+
+    <!--搜索热词tag的颜色-->
+    <!--<color name="hot_key_color1">#c6d762</color>-->
+    <!--<color name="hot_key_color2">#e7306d</color>-->
+    <!--<color name="hot_key_color3">#efe9e7</color>-->
+    <!--<color name="hot_key_color4">#09f1da</color>-->
+
 </resources>

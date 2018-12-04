@@ -8,6 +8,8 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.widget.DrawerLayout
 import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
 import butterknife.BindString
 import butterknife.BindView
@@ -128,6 +130,17 @@ class MainActivity :
         }
         transaction.show(fragment)
         transaction.commit()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        this.menuInflater.inflate(R.menu.main_option_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        super.onOptionsItemSelected(item)
+        presenter?.disposeOptionMenuEvent(this, item!!)
+        return true
     }
 
     companion object {

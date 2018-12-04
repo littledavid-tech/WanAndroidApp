@@ -31,4 +31,10 @@
     <string name="my_collected_activity_title">My Collected</string>
     <string name="my_collected_popup_menu_remove">Remove</string>
     <string name="my_collected_article_remove_failed">Failed to remove article</string>
+    <string name="home_option_menu_search">Search</string>
+    <string name="search_hot_key">Hot Key</string>
+    <string name="search_activity_title">Search</string>
+    <string name="app_networw_exception">Network Anomaly!</string>
+    <string name="app_unkown_exception">Unknown Exception!</string>
+    <string name="search_result_activity_title">Search Result</string>
 </resources>

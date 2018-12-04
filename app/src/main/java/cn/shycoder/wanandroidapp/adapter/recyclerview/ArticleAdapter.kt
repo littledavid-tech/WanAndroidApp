@@ -2,6 +2,7 @@ package cn.shycoder.wanandroidapp.adapter.recyclerview
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,7 +33,7 @@ class ArticleAdapter(context: Context, list: MutableList<Article>)
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         val item = list[position]
         holder!!.article = item
-        holder.tvTitle.text = item.title
+        holder.tvTitle.text = Html.fromHtml(item.title)
         holder.tvAuthor.text = item.author
         holder.tvKnowledgeSystem.text = "${item.superChapterName}/${item.chapterName}"
         holder.tvKnowledgeSystem.tag = "${item.superChapterId}/${item.superChapterId}"

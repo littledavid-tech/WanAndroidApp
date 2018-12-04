@@ -1,7 +1,9 @@
 package cn.shycoder.wanandroidapp.presenter
 
+import android.app.SearchableInfo
 import android.content.Context
 import android.support.v4.app.Fragment
+import android.view.MenuItem
 import cn.shycoder.wanandroidapp.R
 import cn.shycoder.wanandroidapp.SPKeyConst
 import cn.shycoder.wanandroidapp.model.api.UserService
@@ -9,6 +11,7 @@ import cn.shycoder.wanandroidapp.presenter.contract.HomeContract
 import cn.shycoder.wanandroidapp.utils.MyApplication
 import cn.shycoder.wanandroidapp.view.activity.LoginActivity
 import cn.shycoder.wanandroidapp.view.activity.MyCollectedArticleActivity
+import cn.shycoder.wanandroidapp.view.activity.SearchActivity
 import cn.shycoder.wanandroidapp.view.fragment.ArticleFragment
 import cn.shycoder.wanandroidapp.view.fragment.KnowledgeSystemFragment
 import cn.shycoder.wanandroidapp.view.fragment.ProjectFragment
@@ -20,6 +23,7 @@ import io.reactivex.schedulers.Schedulers
 
 class HomePresenterImpl
     : HomeContract.Presenter {
+
 
     private var mFragmentMap: HashMap<Int, Fragment?> = hashMapOf()
 
@@ -95,10 +99,16 @@ class HomePresenterImpl
                 })
     }
 
+    override fun disposeOptionMenuEvent(context: Context, menuItem: MenuItem) {
+        //打开搜索界面
+        if (menuItem.itemId == R.id.home_option_menu_search) {
+            SearchActivity.show(context)
+            Logger.i("Open search activity")
+        }
+    }
+
     override fun onDestroy() {
         mFragmentMap.clear()
         super.onDestroy()
     }
-
-
 }

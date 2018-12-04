@@ -21,7 +21,7 @@ class CollectedArticleDetailPresenterImpl(val context: Context) : CollectedArtic
 
     override fun loadCollectedArticle(intent: Intent) {
         this.mCollectedArticle = intent.getParcelableExtra<CollectedArticle>(CollectedArticleDetailActivity
-                .INTENT_EXTRA_COLLCTED_ARTICLE)
+                .INTENT_EXTRA_COLLECTED_ARTICLE)
         this.view?.openCollectedArticle(mCollectedArticle!!)
     }
 
