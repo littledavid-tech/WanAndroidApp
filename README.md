@@ -13,7 +13,11 @@
 
 ### 图片
 
-![图片](img/img_list.png)
+![](http://cdn.shycoder.cn/img_list.png)
+
+### APK
+
+请到[这里](https://github.com/littledavid-tech/WanAndroidApp/tree/master/apk) 下载APK
 
 ### 已经完成的功能
 
