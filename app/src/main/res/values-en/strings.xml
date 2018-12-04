@@ -39,4 +39,9 @@
     <string name="search_result_activity_title">Search Result</string>
     <string name="about_activity_title">About</string>
     <string name="about_label_author">Author</string>
+    <string name="about_api">wanandroid.com</string>
+    <string name="about_github">littledavid-tech</string>
+    <string name="about_author">鲁迅认识的那只猹</string>
+    <string name="about_label_api">API</string>
+    <string name="about_label_github">Github</string>
 </resources>

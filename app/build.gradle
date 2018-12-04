@@ -62,7 +62,7 @@ dependencies {
     //Banner
     implementation 'com.bigkoo:ConvenientBanner:2.1.4'
 
-    //hongyang大声的flowlayout
+    //hongyang大神的flowlayout
     implementation 'com.hyman:flowlayout-lib:1.1.2'
 
     //一个第三方的search view
