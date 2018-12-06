@@ -11,13 +11,13 @@
 * Bing 美图的API 用于作为启动页的背景(希望巨硬不会介意 手动讨好)
 * [WanAndroid API](http://wanandroid.com/blog/show/2)  来自hongyang大神
 
+### APK
+
+请到[这里下载](https://github.com/littledavid-tech/WanAndroidApp/releases)最新的APK
+
 ### 图片
 
 ![](http://cdn.shycoder.cn/img_list.png)
-
-### APK
-
-请到[这里](https://github.com/littledavid-tech/WanAndroidApp/tree/master/apk) 下载APK
 
 ### 已经完成的功能
 
@@ -41,10 +41,16 @@
 ### 开发计划
 
 - [ ] 重构代码
-- [ ] Android 8.0 的图标适配
+- [x] Android 8.0 的图标适配
 - [ ] 用户注册
 - [ ] TO-DO 模块
 - [ ] 主题颜色切换(换肤)
+
+### 更新
+
+2018-12-6
+
+完成 Android 8.0 的图标适配
 
 ###  依赖
 
