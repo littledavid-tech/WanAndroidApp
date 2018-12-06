@@ -2,21 +2,15 @@
 <resources>
     <color name="primary">#03A9F4</color>
     <color name="primary_dark">#0288D1</color>
-    <color name="primary_light">#B3E5FC</color>
     <color name="accent">#4CAF50</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>
-    <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
     <color name="red">#de4242</color>
     <color name="like_color">#4fc4d9</color>
     <color name="main_bottom_nav_bg">#f9f3f3</color>
     <color name="white">#FFFFFF</color>
     <!--主界面项目Fragment的颜色列表-->
-    <color name="main_project_block_pink">#e47f7f</color>
-    <color name="main_project_block_green">#c0edbc</color>
-    <color name="main_project_block_blue">#7eb7d1</color>
-    <color name="main_project_block_cyan">#7952ead8</color>
 
     <!--搜索热词tag的颜色-->
     <!--<color name="hot_key_color1">#c6d762</color>-->

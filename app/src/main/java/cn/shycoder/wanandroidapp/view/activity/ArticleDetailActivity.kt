@@ -26,7 +26,7 @@ class ArticleDetailActivity
     lateinit var webView: WebView
 
     @BindString(R.string.article_detail_title)
-    lateinit var title: String
+    lateinit var activityTitle: String
 
     private var mOptionMenu: Menu? = null
 
@@ -81,7 +81,7 @@ class ArticleDetailActivity
     }
 
     override fun getToolbarTitle(): String {
-        return this.title
+        return this.activityTitle
     }
 
     companion object {

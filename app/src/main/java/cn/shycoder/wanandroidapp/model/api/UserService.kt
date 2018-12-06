@@ -40,7 +40,7 @@ interface UserService {
     @Headers(NetConst.COOKIE_HEADER)
     @FormUrlEncoded
     @POST("/lg/collect/add/json")
-    fun collectExternalArticle(@Field("title") title: String,
+    fun collectExternalArticle(@Field("activityTitle") title: String,
                                @Field("author") author: String,
                                @Field("link") link: String): Observable<SuperEntity<Any>>
 

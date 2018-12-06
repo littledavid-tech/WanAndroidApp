@@ -1,11 +1,6 @@
 <resources>
     <string name="app_name">Wan Android</string>
-    <string name="app_version">1.0</string>
     <!--主页的相关元素的Text-->
-    <string name="main_bottom_nav_name">主页</string>
-    <string name="home_page__tab_article">文章</string>
-    <string name="home_page__tab_project">项目</string>
-    <string name="welcome_welcome_saying">Had I not seen the Sun, I could have borne the shade.</string>
     <string name="main_nav_head_tourist">游客</string>
     <string name="main_nav_menu_my">我的</string>
     <string name="main_nav_menu_other">其他</string>
@@ -25,23 +20,23 @@
     <string name="article_detail_option_menu_share">分享</string>
     <string name="article_detail_option_menu_open_in_system_browser">系统浏览器打开</string>
     <string name="article_detail_option_menu_collect">收藏</string>
-    <string name="article_detail_title">文章详情</string>
     <string name="article_detail_msg_share_function_will_be_added_soon">分享功能将会很快添加</string>
     <string name="app_msg_please_login">请先登录</string>
-    <string name="my_collected_activity_title">我的收藏</string>
     <string name="my_collected_popup_menu_remove">移除</string>
     <string name="my_collected_article_remove_failed">移除失败</string>
     <string name="home_option_menu_search">搜索</string>
     <string name="search_hot_key">搜索热词</string>
-    <string name="search_activity_title">搜索</string>
     <string name="app_networw_exception">网络异常!</string>
     <string name="app_unkown_exception">未知错误!</string>
-    <string name="search_result_activity_title">搜索结果</string>
-    <string name="about_activity_title">关于</string>
     <string name="about_api">http://wanandroid.com/</string>
     <string name="about_github">"littledavid-tech "</string>
     <string name="about_author">鲁迅认识的那只猹</string>
     <string name="about_label_api">API</string>
     <string name="about_label_github">Github</string>
     <string name="about_label_author">作者</string>
+    <string name="search_result_activity_title">搜索结果</string>
+    <string name="search_activity_title">搜索</string>
+    <string name="my_collected_activity_title">我的收藏</string>
+    <string name="article_detail_title">文章详情</string>
+    <string name="about_activity_title">关于</string>
 </resources>

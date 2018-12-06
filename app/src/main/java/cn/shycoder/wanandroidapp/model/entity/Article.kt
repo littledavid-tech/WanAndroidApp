@@ -66,7 +66,7 @@ class Article() : Parcelable {
 //        parcel.writeInt(superChapterId)
 //        parcel.writeString(superChapterName)
 //        parcel.writeTypedList(tags)
-//        parcel.writeString(title)
+//        parcel.writeString(activityTitle)
 //        parcel.writeInt(type)
 //        parcel.writeInt(userId)
 //        parcel.writeInt(visible)
